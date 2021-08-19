@@ -1,0 +1,11 @@
+@import './variables';
+body {
+  font-family: $font-content;
+  font-weight: 400;
+  /*font-size: 16px;*/
+  line-height: 1.7;
+}
+
+.header-font {
+  font-family: $font-header;
+}

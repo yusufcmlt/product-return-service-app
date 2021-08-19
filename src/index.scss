@@ -1,0 +1,28 @@
+@import './styles/typography';
+@import './styles/variables';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  /* Layout */
+  background: linear-gradient(238.98deg, $color-red-1 -2.39%, $color-red-2 110.15%);
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  padding: 3rem;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

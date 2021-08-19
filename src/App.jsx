@@ -1,12 +1,13 @@
 import React from 'react';
 
-import './App.css';
-import Counter from './components/Counter/Counter';
+import Logo from './components/logo/Logo';
+
+import './App.scss';
 
 function App() {
   return (
     <div className="app">
-      <Counter />
+      <Logo />
     </div>
   );
 }
