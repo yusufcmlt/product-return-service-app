@@ -4,7 +4,7 @@ import './Button.style.scss';
 
 export default function Button({
   buttonText,
-  isSubmit,
+  isSubmit = false,
   buttonStyle = 'black',
   onClickFunction = () => {},
 }) {
