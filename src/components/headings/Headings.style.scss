@@ -1,0 +1,13 @@
+@import '../../styles/variables';
+
+.heading {
+  &__title {
+    font-size: 3rem;
+    font-weight: 600;
+  }
+  &__subtitle {
+    color: $color-gray-dark;
+    font-weight: 600;
+    font-size: 1.6rem;
+  }
+}
