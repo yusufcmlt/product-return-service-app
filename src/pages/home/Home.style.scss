@@ -1,0 +1,28 @@
+.homepage {
+  display: grid;
+  grid-template-columns: [homepage-content-start] 1.5fr [homepage-content-end homepage-icon-start] 1fr [homepage-icon-end];
+  grid-template-rows: [full-start] 1fr [full-end];
+  &__customer-logo {
+    background-image: url('../../assets/icons/customer-service.svg');
+    height: 50rem;
+    width: 50rem;
+    opacity: 0.5;
+
+    grid-row: 1/-1;
+    grid-column: homepage-icon-start/homepage-icon-end;
+    grid-row: full-start/full-end;
+  }
+  &__content {
+    display: grid;
+    grid-template-rows: repeat(3, min-content);
+    row-gap: 10rem;
+    align-content: center;
+
+    &__buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 25rem));
+      column-gap: 5rem;
+      row-gap: 2rem;
+    }
+  }
+}
