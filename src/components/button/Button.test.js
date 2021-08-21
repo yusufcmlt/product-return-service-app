@@ -5,9 +5,9 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import Button from './Button';
 
-describe('button component tests', () => {
-  const handleClick = jest.fn();
+const handleClick = jest.fn();
 
+describe('button component tests', () => {
   beforeEach(() => {
     render(<Button buttonText="Test Button" onClickFunction={handleClick} buttonStyle="black" />);
   });
