@@ -2,21 +2,21 @@ import '@testing-library/jest-dom';
 
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 
-import Navbar from '../navbar/Navbar';
+import Header from './Header';
+
 import { LanguageProvider } from '../../contexts/LanguageContext';
 
 describe('navbar tests', () => {
-  test('navigates to given path when clicked', () => {
+  test('if navigates to given path when clicked', () => {
     const history = createMemoryHistory();
     render(
       <Router history={history}>
         <LanguageProvider>
-          <Navbar />
+          <Header />
         </LanguageProvider>
       </Router>
     );

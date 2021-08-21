@@ -12,17 +12,17 @@ describe('button component tests', () => {
     render(<Button buttonText="Test Button" onClickFunction={handleClick} buttonStyle="black" />);
   });
 
-  test('loads button component ', () => {
+  test('if button component renders ', () => {
     expect(screen.getByTestId('app-btn')).toBeInTheDocument();
     expect(screen.getByTestId('app-btn')).toHaveTextContent('Test Button');
   });
 
-  test('Calls onClickFunction when clicked', () => {
+  test('if button calls onClickFunction when clicked', () => {
     fireEvent.click(screen.getByTestId('app-btn'));
     expect(handleClick).toHaveBeenCalled();
   });
 
-  test('button has given class', () => {
+  test('if button has given class', () => {
     expect(screen.getByTestId('app-btn')).toHaveClass('btn--black');
   });
 });
