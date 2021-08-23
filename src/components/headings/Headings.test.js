@@ -2,9 +2,7 @@ import '@testing-library/jest-dom';
 
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
-
-import TitleHeading from './TitleHeading';
-import SubHeading from './SubHeading';
+import { SubHeading, TitleHeading } from './Headings';
 
 describe('navbar tests', () => {
   afterEach(cleanup);
