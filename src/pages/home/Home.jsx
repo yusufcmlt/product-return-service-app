@@ -6,15 +6,15 @@ import { SubHeading, TitleHeading } from '../../components/headings/Headings';
 import CustomerLogo from './components/CustomerLogo';
 import Button from '../../components/button/Button';
 
-import languages from '../../utils/languages';
+import { languagesButtons, languagesHeadings } from '../../utils/languages/languages';
 import { CHECK_TICKET, NEW_TICKET } from '../../routes/RouteContstants';
 
 import './Home.style.scss';
 
 export default function Home() {
   const { language } = useLanguage();
-  const { itemReturnSystem, itemReturnSytemSubtext, newReturn, checkReturnStatus } =
-    languages[language];
+  const { itemReturnSystemTitle, itemReturnSystemSubtitle } = languagesHeadings[language];
+  const { newReturn, checkReturnStatus } = languagesButtons[language];
 
   const history = useHistory();
 
@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <section data-testid="app-homepage" className="homepage">
       <div className="homepage__content">
-        <TitleHeading>{itemReturnSystem}</TitleHeading>
-        <SubHeading>{itemReturnSytemSubtext}</SubHeading>
+        <TitleHeading>{itemReturnSystemTitle}</TitleHeading>
+        <SubHeading>{itemReturnSystemSubtitle}</SubHeading>
         <div className="homepage__content__buttons">
           <Button
             buttonText={newReturn}
