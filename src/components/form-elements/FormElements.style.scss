@@ -1,0 +1,99 @@
+@import '../../styles/variables';
+
+.form {
+  &__title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $color-gray-dark;
+  }
+  &__subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $color-gray-lighter;
+  }
+  &__label {
+    font-size: 1.4rem;
+    color: $color-gray-lighter;
+    font-weight: 600;
+  }
+
+  &__select {
+    height: 4rem;
+    background-color: $color-white;
+    border: none;
+    border-radius: 0.5rem;
+    border: 0.2rem solid $color-gray-input;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1.4rem;
+
+    option {
+      background-color: $color-white;
+    }
+  }
+
+  &__text-input {
+    height: 4rem;
+    padding: 0.5rem 1rem;
+
+    border: 0.2rem solid $color-gray-input;
+    border-radius: 0.5rem;
+
+    font-family: inherit;
+    font-size: 1.4rem;
+    &:focus {
+      outline: 0.2rem solid $color-blue;
+    }
+    &--invalid {
+      outline: 0.2rem solid $color-red-2;
+    }
+    &--valid {
+      outline: 0.2rem solid $color-green-light;
+    }
+  }
+
+  &__textarea {
+    min-height: 10rem;
+    resize: none;
+    padding: 1rem;
+  }
+  &__group {
+    display: grid;
+    grid-template-rows: repeat(3, min-content);
+    row-gap: 1rem;
+  }
+  &__file-input {
+    height: 5rem;
+    padding: 0 5rem;
+    border-radius: 0.5rem;
+    background-color: $color-green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+
+    color: $color-white;
+    font-size: 1.7rem;
+    font-weight: 600;
+    box-shadow: $box-shadow-2;
+
+    justify-self: center;
+    margin: 2rem 0;
+
+    &:active {
+      transform: translateY(2px);
+    }
+    &:hover {
+      background-color: $color-green-light;
+    }
+
+    input {
+      width: 0;
+    }
+  }
+  &__error {
+    font-size: 1rem;
+    color: $color-red-2;
+  }
+}
