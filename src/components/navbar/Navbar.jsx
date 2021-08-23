@@ -15,7 +15,7 @@ export default function Navbar() {
     <nav className="navbar">
       <Link to={HOMEPAGE}>{homepage}</Link>
       <Link to={ABOUT}>{about}</Link>
-      <Link data-testid="navbar-link" to={ADMIN}>
+      <Link data-testid="navbar-link-admin" to={ADMIN}>
         {admin}
       </Link>
     </nav>

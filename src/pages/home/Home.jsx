@@ -1,15 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
-import TitleHeading from '../../components/headings/TitleHeading';
-import SubHeading from '../../components/headings/SubHeading';
 import { useLanguage } from '../../contexts/LanguageContext';
+
+import { SubHeading, TitleHeading } from '../../components/headings/Headings';
+import CustomerLogo from './components/CustomerLogo';
+import Button from '../../components/button/Button';
+
 import languages from '../../utils/languages';
+import { CHECK_TICKET, NEW_TICKET } from '../../routes/RouteContstants';
 
 import './Home.style.scss';
-import CustomerLogo from './CustomerLogo';
-import Button from '../../components/button/Button';
-import { CHECK_TICKET, NEW_TICKET } from '../../routes/RouteContstants';
 
 export default function Home() {
   const { language } = useLanguage();
