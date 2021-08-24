@@ -1,0 +1,37 @@
+.new-return-page {
+  display: grid;
+  grid-template-rows: min-content max-content;
+  row-gap: 0.5rem;
+
+  form {
+    display: grid;
+    width: 120rem;
+    grid-template-columns: [personal-start] 50rem [personal-end item-start] 50rem [item-end];
+    grid-template-rows: [full-start] 1fr [half-start] 1fr [half-end] 1fr [full-end];
+    column-gap: 10rem;
+
+    justify-content: space-between;
+  }
+
+  .form {
+    &__part {
+      &--personal {
+        grid-row: full-start/full-end;
+      }
+      &--item {
+        grid-row: full-start/half-end;
+      }
+      &--button {
+        grid-column: item-start/item-end;
+        grid-row: half-end/full-end;
+
+        align-self: center;
+
+        button {
+          min-width: 50rem;
+          max-width: 50rem;
+        }
+      }
+    }
+  }
+}

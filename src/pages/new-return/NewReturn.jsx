@@ -1,17 +1,20 @@
 import React from 'react';
-import TitleHeading from '../../components/headings/TitleHeading';
-import { useLanguage } from '../../contexts/LanguageContext';
-import languages from '../../utils/languages';
-import NewReturnForm from './components/NewReturnForm';
+import { useLanguage } from 'contexts/LanguageContext';
+import { languagesHeadings } from 'utils/languages/languages';
+
+import { TitleHeading } from 'components/headings/Headings';
+import NewReturnForm from './components/new-return-form/NewReturnForm';
+
+import './NewReturn.style.scss';
 
 export default function NewReturn() {
   const { language } = useLanguage();
-  const { createNewReturn } = languages[language];
+  const { createNewReturnTitle } = languagesHeadings[language];
 
   return (
     <section className="new-return-page" data-testid="app-new-return-page">
-      <TitleHeading>{createNewReturn}</TitleHeading>
-      <NewReturnForm />
+      <TitleHeading>{createNewReturnTitle}</TitleHeading>
+      <NewReturnForm language={language} />
     </section>
   );
 }

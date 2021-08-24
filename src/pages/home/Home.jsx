@@ -1,13 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useLanguage } from '../../contexts/LanguageContext';
+import { useLanguage } from 'contexts/LanguageContext';
+import { languagesButtons, languagesHeadings } from 'utils/languages/languages';
+import { CHECK_TICKET, NEW_TICKET } from 'routes/RouteContstants';
 
-import { SubHeading, TitleHeading } from '../../components/headings/Headings';
+import Button from 'components/button/Button';
+import { SubHeading, TitleHeading } from 'components/headings/Headings';
 import CustomerLogo from './components/CustomerLogo';
-import Button from '../../components/button/Button';
-
-import { languagesButtons, languagesHeadings } from '../../utils/languages/languages';
-import { CHECK_TICKET, NEW_TICKET } from '../../routes/RouteContstants';
 
 import './Home.style.scss';
 
