@@ -1,0 +1,28 @@
+@keyframes fadeInAnimation {
+  from {
+    transform: translateY(5rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutAnimation {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(10rem);
+    opacity: 0.2;
+  }
+}
+
+.fade-in {
+  animation: fadeInAnimation 0.5s forwards;
+}
+.fade-out {
+  animation: fadeOutAnimation 0.5s forwards;
+}

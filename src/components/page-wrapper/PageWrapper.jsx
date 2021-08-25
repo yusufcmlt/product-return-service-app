@@ -1,21 +1,24 @@
 import React, { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import './PageWrapper.style.scss';
 
 export default function PageWrapper({ children }) {
-  const pageWrapperRef = useRef(null);
+  const pageRef = useRef(null);
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    const pageWrapperElement = pageWrapperRef.current;
-    pageWrapperElement.classList.add('fade-in');
+    const pageElementClasses = pageRef.current.classList;
+    pageElementClasses.remove('fade-in');
+    setTimeout(() => {
+      pageElementClasses.add('fade-in');
+    }, 100);
+  }, [pathname]);
 
-    return () => {
-      pageWrapperElement.classList.remove('fade-in');
-    };
-  }, []);
+  useEffect(() => {}, []);
 
   return (
-    <div ref={pageWrapperRef} className="page">
+    <div ref={pageRef} className="page">
       {children}
     </div>
   );

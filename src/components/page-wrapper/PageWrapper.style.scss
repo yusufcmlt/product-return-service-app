@@ -1,15 +1,9 @@
+@import '/src/styles/animations';
 .page {
   grid-row: content-start/content-end;
   display: grid;
   justify-content: center;
   align-content: center;
 
-  transform: translateY(10rem);
-  opacity: 0.2;
-  transition: 1s;
-}
-
-.fade-in {
-  transform: translateY(0);
-  opacity: 1;
+  opacity: 0;
 }
