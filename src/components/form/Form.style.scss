@@ -60,11 +60,40 @@
     font-family: inherit;
     font-size: 1.4rem;
   }
-  &__group {
+  &__row {
     display: grid;
     grid-template-rows: repeat(3, min-content);
     row-gap: 0.5rem;
     margin: 1rem 0;
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &--box-error {
+      input,
+      textarea {
+        border: 0.2rem solid $color-red-1;
+        &:focus {
+          outline: 0.1rem solid $color-red-1;
+        }
+      }
+      .form__label {
+        color: $color-red-1;
+      }
+    }
+    &--box-valid {
+      input,
+      textarea {
+        border: 0.2rem solid $color-green-light;
+        &:focus {
+          outline: 0.1rem solid $color-green-light;
+        }
+      }
+      .form__label {
+        color: $color-green-light;
+      }
+    }
   }
   &__file-input {
     height: 5.5rem;
@@ -100,10 +129,15 @@
       display: none;
     }
   }
-  &__error {
-    height: 1.2rem;
+  &__status-text {
+    min-height: 1.2rem;
     font-size: 1.2rem;
     font-weight: 600;
-    color: $color-red-2;
+    &--error {
+      color: $color-red-2;
+    }
+    &--valid {
+      color: $color-green-light;
+    }
   }
 }
