@@ -1,5 +1,29 @@
 import yup from './yup';
 
+const numberMatcher = /^[0-9]+$/;
+const fileTypes = ['image/webp', 'image/jpeg'];
+const maxFileSizeByte = 5242880;
+
+const checkFileTypes = (files) => {
+  const fileKeys = Object.keys(files);
+  return fileKeys.every((key) => fileTypes.includes(files[key].type));
+};
+const checkFileSizes = (files) => {
+  const fileKeys = Object.keys(files);
+  return fileKeys.every((key) => files[key].size <= maxFileSizeByte);
+};
+
+const newTicketFormDefaults = {
+  ticketFirstName: '',
+  ticketLastName: '',
+  ticketAge: '',
+  ticketIdNumber: '',
+  ticketTelNumber: '',
+  ticketAddress: '',
+  ticketReason: 'Seçiniz',
+  ticketReasonDetail: '',
+};
+
 const ticketSchema = yup.object().shape({
   ticketFirstName: yup
     .string()
@@ -21,13 +45,13 @@ const ticketSchema = yup.object().shape({
     .string()
     .min(11, '*Kimlik no 11 rakamdan oluşmalı')
     .max(11, '*Kimlik no 11 rakamdan oluşmalı')
-    .matches(/^[0-9]+$/, '*Kimlik no sadece rakamlardan oluşmalı')
+    .matches(numberMatcher, '*Kimlik no sadece rakamlardan oluşmalı')
     .required('*Gerekli alan'),
   ticketTelNumber: yup
     .string()
     .min(11, '*Telefon no en az 10 en fazla 11 rakamdan oluşmalı')
     .max(11, '*Telefon no en az 10 en fazla 11 rakamdan oluşmalı')
-    .matches(/^[0-9]+$/, '*Telefon no sadece rakamlardan oluşmalı')
+    .matches(numberMatcher, '*Telefon no sadece rakamlardan oluşmalı')
     .required('*Gerekli alan'),
   ticketAddress: yup
     .string()
@@ -40,6 +64,17 @@ const ticketSchema = yup.object().shape({
     .min(20, '*En az 20 karakter')
     .max(100, '*En fazla 100 karakter')
     .required('*Gerekli alan'),
+  ticketFile: yup
+    .mixed()
+    .test('IS_ADDED', 'Dosya eklemelisiniz', (value) => Object.keys(value).length)
+    .test('FILE_FORMAT', 'Desteklenmeyen dosyalar', (value) => checkFileTypes(value))
+    .test('FILE_SIZE', "Dosya boyutu 5MB'dan büyük", (value) => checkFileSizes(value))
+    .test(
+      'FILE_COUNT',
+      '3 Dosyadan fazla ekleyemezsiniz',
+      (value) => Object.keys(value).length <= 3
+    )
+    .required(),
 });
 
-export default ticketSchema;
+export { ticketSchema, newTicketFormDefaults };

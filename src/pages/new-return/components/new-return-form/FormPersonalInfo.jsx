@@ -1,72 +1,75 @@
 import React, { useEffect } from 'react';
+import { useFormContext } from 'react-hook-form';
 
-import { languagesForms } from 'utils/languages/languages';
+import Form from 'components/form/Form';
 
-import { FormGroup, FormSubtitle, FormTitle } from 'components/form-elements/FormElements';
+/**
+ * Personal Info part of new return form.
+ */
 
-export default function FormPersonalInfo({ language, register, formState }) {
-  const { errors } = formState;
-
-  // Using languages
-  const {
-    personalInfoTitle,
-    personalInfoSubtitle,
-    nameLabel,
-    lastNameLabel,
-    idNumberLabel,
-    telNumberLabel,
-    ageLabel,
-    addressLabel,
-  } = languagesForms[language];
+export default function FormPersonalInfo() {
+  const { formState } = useFormContext();
+  const { errors, dirtyFields } = formState;
 
   useEffect(() => {
     console.log(errors);
-  }, [errors]);
+    console.log(dirtyFields);
+  });
 
   return (
     <div className="form__part--personal">
-      <FormGroup>
-        <FormTitle>{personalInfoTitle}</FormTitle>
-        <FormSubtitle>{personalInfoSubtitle}</FormSubtitle>
-      </FormGroup>
-      <FormGroup
+      <Form.Row>
+        <Form.Title>Kişisel bilgileriniz</Form.Title>
+        <Form.Subtitle>Merak etmeyin aramızda kalacak :)</Form.Subtitle>
+      </Form.Row>
+      <Form.Row
         labelForId="ticketFirstName"
-        labelText={nameLabel}
-        errorText={errors?.ticketFirstName?.message}
+        labelText="Adınız"
+        statusText={errors?.ticketFirstName?.message}
+        isTextShown={!!dirtyFields.ticketFirstName || !!errors.ticketFirstName}
       >
-        <input id="ticketFirstName" {...register('ticketFirstName')} />
-      </FormGroup>
-      <FormGroup
+        <Form.TextInput id="ticketFirstName" />
+      </Form.Row>
+      <Form.Row
         labelForId="ticketLastName"
-        labelText={lastNameLabel}
-        errorText={errors?.ticketLastName?.message}
+        labelText="Soyadınız"
+        statusText={errors?.ticketLastName?.message}
+        isTextShown={!!dirtyFields.ticketLastName || !!errors.ticketLastName}
       >
-        <input id="ticketLastName" {...register('ticketLastName')} />
-      </FormGroup>
-      <FormGroup labelForId="ticketAge" labelText={ageLabel} errorText={errors?.ticketAge?.message}>
-        <input id="ticketAge" {...register('ticketAge')} />
-      </FormGroup>
-      <FormGroup
+        <Form.TextInput id="ticketLastName" />
+      </Form.Row>
+      <Form.Row
+        labelForId="ticketAge"
+        labelText="Yaşınız"
+        statusText={errors?.ticketAge?.message}
+        isTextShown={!!dirtyFields.ticketAge || !!errors.ticketAge}
+      >
+        <Form.TextInput id="ticketAge" />
+      </Form.Row>
+      <Form.Row
         labelForId="ticketIdNumber"
-        labelText={idNumberLabel}
-        errorText={errors?.ticketIdNumber?.message}
+        labelText="TC No"
+        statusText={errors?.ticketIdNumber?.message}
+        isTextShown={!!dirtyFields.ticketIdNumber || !!errors.ticketIdNumber}
       >
-        <input id="ticketIdNumber" {...register('ticketIdNumber')} />
-      </FormGroup>
-      <FormGroup
+        <Form.TextInput id="ticketIdNumber" />
+      </Form.Row>
+      <Form.Row
         labelForId="ticketTelNumber"
-        labelText={telNumberLabel}
-        errorText={errors?.ticketTelNumber?.message}
+        labelText="Telefon"
+        statusText={errors?.ticketTelNumber?.message}
+        isTextShown={!!dirtyFields.ticketTelNumber || !!errors.ticketTelNumber}
       >
-        <input id="ticketTelNumber" {...register('ticketTelNumber')} />
-      </FormGroup>
-      <FormGroup
+        <Form.TextInput id="ticketTelNumber" />
+      </Form.Row>
+      <Form.Row
         labelForId="ticketAddress"
-        labelText={addressLabel}
-        errorText={errors?.ticketAddress?.message}
+        labelText="Adres"
+        statusText={errors?.ticketAddress?.message}
+        isTextShown={!!dirtyFields.ticketAddress || !!errors.ticketAddress}
       >
-        <textarea id="ticketAddress" {...register('ticketAddress')} />
-      </FormGroup>
+        <Form.TextArea id="ticketAddress" />
+      </Form.Row>
     </div>
   );
 }

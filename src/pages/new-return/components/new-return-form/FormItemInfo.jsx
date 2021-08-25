@@ -1,52 +1,40 @@
+import Form from 'components/form/Form';
 import React from 'react';
-import {
-  FileInput,
-  FormGroup,
-  FormSubtitle,
-  FormTitle,
-} from 'components/form-elements/FormElements';
+import { useFormContext } from 'react-hook-form';
 
-import { languagesButtons, languagesForms } from 'utils/languages/languages';
-
-export default function FormItemInfo({ language, register, formState }) {
-  const { errors } = formState;
-  // Using languages
-  const {
-    returnInfoTitle,
-    returnInfoSubtitle,
-    returnReasonLabel,
-    returnReasonDetailLabel,
-    addFileLabel,
-  } = languagesForms[language];
-
-  const { addFile } = languagesButtons[language];
+export default function FormItemInfo() {
+  const { formState } = useFormContext();
+  const { errors, dirtyFields } = formState;
 
   return (
     <div className="form__part--item">
-      <FormGroup>
-        <FormTitle>{returnInfoTitle}</FormTitle>
-        <FormSubtitle>{returnInfoSubtitle}</FormSubtitle>
-      </FormGroup>
-      <FormGroup
+      <Form.Row>
+        <Form.Title>İadenizle ilgili bilgiler</Form.Title>
+        <Form.Subtitle>Ürününüzle yaşadığınız sorunun detaylarını yazın.</Form.Subtitle>
+      </Form.Row>
+      <Form.Row
         labelForId="ticketReason"
-        labelText={returnReasonLabel}
+        labelText="İade nedeni"
         errorText={errors?.ticketReason?.message}
+        isTextShown={!!dirtyFields.ticketReason || !!errors.ticketReason}
       >
-        <select id="ticketReason" {...register('ticketReason')}>
-          <option>TEST</option>
-        </select>
-      </FormGroup>
-      <FormGroup
+        <Form.Select id="ticketReason" options={['TEST', 'TEST2']} />
+      </Form.Row>
+      <Form.Row
         labelForId="ticketReasonDetail"
-        labelText={returnReasonDetailLabel}
-        errorText={errors?.ticketReasonDetail?.message}
+        labelText="Yaşadığınız sorunun detayları (en az 20 karakter)"
+        statusText={errors?.ticketReasonDetail?.message}
+        isTextShown={!!dirtyFields.ticketReasonDetail || !!errors.ticketReasonDetail}
       >
-        <textarea id="ticketReasonDetail" {...register('ticketReasonDetail')} />
-      </FormGroup>
-      <FormGroup>
-        <p className="form__label">{addFileLabel}</p>
-        <FileInput id="ticketFile" fileInputText={addFile} {...register('ticketFile')} />
-      </FormGroup>
+        <Form.TextArea id="ticketReasonDetail" />
+      </Form.Row>
+      <Form.Row
+        labelText="Sorunuzla ilgili fotoğraf ekleyebilirsiniz.(Max: 3 adet)"
+        statusText={errors?.ticketFile?.message}
+        isTextShown={!!dirtyFields.ticketFile || !!errors.ticketFile}
+      >
+        <Form.FileInput id="ticketFile" fileInputText="Dosya Ekle" />
+      </Form.Row>
     </div>
   );
 }
