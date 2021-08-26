@@ -21,9 +21,10 @@ const modifyReturnFormData = (data) => {
   // Creation and modify date
   const ticketCreatedAt = new Date();
   const ticketModifiedAt = new Date();
+  const ticketStatus = 'pending';
 
   // Return a new object for database
-  return { ...data, ticketFile, ticketCreatedAt, ticketModifiedAt };
+  return { ...data, ticketFile, ticketCreatedAt, ticketModifiedAt, ticketStatus };
 };
 
 export default modifyReturnFormData;
