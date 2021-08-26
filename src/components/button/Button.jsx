@@ -3,7 +3,7 @@ import React from 'react';
 import './Button.style.scss';
 
 export default function Button({
-  buttonText,
+  buttonText = '',
   isSubmit = false,
   isDisabled = false,
   buttonStyle = 'black',
