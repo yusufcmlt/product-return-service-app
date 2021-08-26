@@ -32,6 +32,15 @@
       border: 1px solid $color-black;
     }
   }
+  &--green {
+    background-color: $color-green;
+    color: $color-white;
+    &:hover {
+      background-color: $color-white;
+      color: $color-green;
+      border: 1px solid $color-green;
+    }
+  }
   &:disabled {
     background-color: $color-gray-dark;
     color: $color-white;

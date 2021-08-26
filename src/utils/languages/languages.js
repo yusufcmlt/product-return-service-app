@@ -10,6 +10,7 @@ const languagesButtons = {
     admin: 'Giriş',
     about: 'Hakkımızda',
     addFile: 'Dosya Ekle',
+    startReturnProcess: 'İade Sürecini Başlat',
   },
   en: {
     newReturn: 'New Return',
@@ -18,6 +19,7 @@ const languagesButtons = {
     admin: 'Login',
     about: 'About',
     addFile: 'Add File',
+    startReturnProcess: 'Start Return Process',
   },
 };
 const languagesHeadings = {
@@ -31,14 +33,14 @@ const languagesHeadings = {
     itemReturnSystemTitle: 'Item Return System',
     itemReturnSystemSubtitle:
       'You can start a new item return process or check your current return status',
-    createNewReturnTitle: 'Start ',
+    createNewReturnTitle: 'Start a new return process',
   },
 };
 const languagesForms = {
   tr: {
-    personalInfoTitle: 'Kişisel Bilgileriniz',
+    personalInfoTitle: '1-Kişisel Bilgileriniz',
     personalInfoSubtitle: 'Merak etmeyin aramızda kalacak :)',
-    returnInfoTitle: 'İadenizle ilgili bilgiler',
+    returnInfoTitle: '2-İadenizle ilgili bilgiler',
     returnInfoSubtitle: 'Ürününüzle yaşadığınız sorunun detaylarını yazın.',
     nameLabel: 'Adınız',
     lastNameLabel: 'Soyadınız',
@@ -48,11 +50,12 @@ const languagesForms = {
     addressLabel: 'Adres',
     returnReasonLabel: 'İade nedeni',
     returnReasonDetailLabel: 'Yaşadığınız sorunun detayları.',
+    addFileLabel: 'Fotoğraf, dosya vb ekleyin',
   },
   en: {
-    personalInfoTitle: 'Personal Information',
+    personalInfoTitle: '1-Personal Information',
     personalInfoSubtitle: "Don't worry, just between us :)",
-    returnInfoTitle: 'Information About Your Problem',
+    returnInfoTitle: '2-Information About Your Problem',
     returnInfoSubtitle: 'Give us a bit more detail about your return',
     nameLabel: 'Name',
     lastNameLabel: 'Last name',
@@ -62,6 +65,7 @@ const languagesForms = {
     addressLabel: 'Address',
     returnReasonLabel: 'Return reason',
     returnReasonDetailLabel: 'Details of your problem',
+    addFileLabel: 'Add photo(s), file(s) etc.',
   },
 };
 
