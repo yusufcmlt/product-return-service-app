@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { addNewTicket } from 'services/firebase/firebaseUtils';
 import { useHistory } from 'react-router-dom';
+import { useTicketContext } from 'contexts/TicketContext';
 
 import useYupValidationResolver from 'hooks/useYupValidationResolver';
 
@@ -19,6 +20,7 @@ import '../../NewReturn.style.scss';
 
 export default function NewReturnForm() {
   const history = useHistory();
+  const { createTicket } = useTicketContext();
 
   // react-hook-form and validations
   const resolver = useYupValidationResolver(ticketSchema);
@@ -35,8 +37,16 @@ export default function NewReturnForm() {
     // Disable button on submit.
     setButtonDisabled(true);
 
-    const onSuccess = () => {
+    // Modify data: add dates, change FileList then send
+    const modifiedData = modifyReturnFormData(data);
+
+    const onSuccess = (ticketDatabaseId) => {
+      // Set form status message
       setFormStatus({ message: 'Talebiniz alındı. Yönlendiriliyorsunuz', status: 'success' });
+
+      // Add ticket data into context
+      createTicket({ ...modifiedData, ticketDatabaseId });
+      // Navigate to success page after 3s
       setTimeout(() => {
         history.replace(TICKET_SUCCESS);
       }, 3000);
@@ -46,8 +56,6 @@ export default function NewReturnForm() {
       setFormStatus({ message: 'İşleminiz gerçekleştirilemedi.', status: 'fail' });
     };
 
-    // Modify data: add dates, change FileList then send
-    const modifiedData = modifyReturnFormData(data);
     addNewTicket(modifiedData, onSuccess, onError);
   };
 

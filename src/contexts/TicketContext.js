@@ -2,12 +2,12 @@ import React, { createContext, useContext, useState } from 'react';
 
 const TicketContext = createContext();
 
-function useTicket() {
+function useTicketContext() {
   return useContext(TicketContext);
 }
 
 function TicketProvider({ children }) {
-  const [ticketData, setTicketData] = useState({});
+  const [ticketData, setTicketData] = useState('');
 
   const createTicket = (ticket = {}) => {
     setTicketData(ticket);
@@ -18,4 +18,4 @@ function TicketProvider({ children }) {
   return <TicketContext.Provider value={value}>{children}</TicketContext.Provider>;
 }
 
-export { useTicket, TicketProvider };
+export { useTicketContext, TicketProvider };
