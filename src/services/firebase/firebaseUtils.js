@@ -18,5 +18,19 @@ const addNewTicket = async (ticketData, successCall, errorCall) => {
   }
 };
 
-export { addNewTicket, database };
+const checkTicketNumber = async (ticketId, foundCall, notFoundCall) => {
+  try {
+    const ticketData = await ticketsRef.doc(ticketId).get();
+    if (ticketData.exists) {
+      foundCall(ticketData.data());
+    } else {
+      notFoundCall();
+    }
+  } catch (error) {
+    console.log(error);
+    notFoundCall(error);
+  }
+};
+
+export { addNewTicket, checkTicketNumber, database };
 export default firebase;

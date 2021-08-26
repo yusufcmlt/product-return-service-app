@@ -1,0 +1,23 @@
+.check-ticket-page {
+  display: grid;
+  justify-items: center;
+  &__search-box {
+    padding: 2rem 0;
+
+    display: grid;
+    justify-content: center;
+    row-gap: 2rem;
+
+    input {
+      width: 60rem;
+    }
+    button {
+      justify-self: center;
+      width: 60rem;
+    }
+    p {
+      text-align: center;
+      font-size: 1.4rem;
+    }
+  }
+}

@@ -10,6 +10,10 @@ const newTicketFormDefaults = {
   ticketReasonDetail: '',
 };
 
+const searchFormDefaults = {
+  ticketSearch: '',
+};
+
 const newTicketFormOptions = ['Ürün ulaşmadı', 'Eksik ürün', 'Hasarlı ürün', 'Yanlış ürün'];
 
-export { newTicketFormDefaults, newTicketFormOptions };
+export { newTicketFormDefaults, newTicketFormOptions, searchFormDefaults };
