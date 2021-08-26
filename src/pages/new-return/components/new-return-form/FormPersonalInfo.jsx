@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import Form from 'components/form/Form';
@@ -10,11 +10,6 @@ import Form from 'components/form/Form';
 export default function FormPersonalInfo() {
   const { formState } = useFormContext();
   const { errors, dirtyFields } = formState;
-
-  useEffect(() => {
-    console.log(errors);
-    console.log(dirtyFields);
-  });
 
   return (
     <div className="form__part--personal">

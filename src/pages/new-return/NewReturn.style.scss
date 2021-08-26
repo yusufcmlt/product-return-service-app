@@ -1,3 +1,4 @@
+@import '/src/styles/variables';
 .new-return-page {
   display: grid;
   grid-template-rows: min-content max-content;
@@ -7,7 +8,7 @@
     display: grid;
     width: 120rem;
     grid-template-columns: [personal-start] 50rem [personal-end item-start] 50rem [item-end];
-    grid-template-rows: [full-start] 1fr [half-start] 1fr [half-end] 1fr [full-end];
+    grid-template-rows: [full-start] min-content [half-start] min-content [half-end] min-content [full-end];
     column-gap: 10rem;
 
     justify-content: space-between;
@@ -31,6 +32,22 @@
           min-width: 50rem;
           max-width: 50rem;
         }
+      }
+    }
+    &__status {
+      text-align: center;
+      margin: 1rem 0;
+      font-weight: 600;
+      font-size: 2rem;
+      grid-column: personal-start/item-end;
+      &--pending {
+        color: $color-blue;
+      }
+      &--success {
+        color: $color-green;
+      }
+      &--fail {
+        color: $color-red-2;
       }
     }
   }
