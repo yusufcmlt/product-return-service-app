@@ -11,8 +11,8 @@ const ticketsRef = database.collection('tickets');
 
 const addNewTicket = async (ticketData, successCall, errorCall) => {
   try {
-    await ticketsRef.add(ticketData);
-    successCall();
+    const docRef = await ticketsRef.add(ticketData);
+    successCall(docRef.id);
   } catch (error) {
     errorCall(error);
   }
