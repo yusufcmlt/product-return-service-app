@@ -100,7 +100,7 @@
     width: 100%;
     padding: 0 5rem;
     border-radius: 0.5rem;
-    background-color: $color-green;
+    background-color: $color-blue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,9 +119,9 @@
       transform: translateY(2px);
     }
     &:hover {
-      color: $color-green;
+      color: $color-blue;
       background-color: $color-white;
-      border: 0.1rem solid $color-green-light;
+      border: 0.1rem solid $color-blue;
     }
 
     input {

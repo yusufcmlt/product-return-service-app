@@ -29,7 +29,7 @@ const FormRow = ({
     <div className={`form__row${showStatusText()}`}>
       <div className="form__row__header">
         <FormLabel labelForId={labelForId} labelText={labelText} />
-        <StatusText {...{ statusText, isTextShown }} />
+        <StatusText data-testid={`test-stattext-${labelForId}`} {...{ statusText, isTextShown }} />
       </div>
       {children}
     </div>

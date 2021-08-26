@@ -2,7 +2,7 @@ import React from 'react';
 
 const FormLabel = ({ labelForId, labelText }) =>
   labelText && (
-    <label data-testid="app-label" className="form__label" htmlFor={labelForId}>
+    <label className="form__label" htmlFor={labelForId} data-testid={`test-label-${labelForId}`}>
       {labelText}
     </label>
   );
