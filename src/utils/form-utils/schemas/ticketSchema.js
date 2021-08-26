@@ -1,27 +1,20 @@
 import yup from './yup';
 
-const numberMatcher = /^[0-9]+$/;
-const fileTypes = ['image/webp', 'image/jpeg'];
-const maxFileSizeByte = 5242880;
+const numberMatcher = /^[0-9]+$/; // Only numbers
 
+const fileTypes = ['image/webp', 'image/jpeg', 'image/png'];
+const maxFileSizeByte = 5242880; // 5MB
+
+// Only accept photograph extensions
 const checkFileTypes = (files) => {
   const fileKeys = Object.keys(files);
   return fileKeys.every((key) => fileTypes.includes(files[key].type));
 };
+
+// Only accept file sizes lower than 5MB
 const checkFileSizes = (files) => {
   const fileKeys = Object.keys(files);
   return fileKeys.every((key) => files[key].size <= maxFileSizeByte);
-};
-
-const newTicketFormDefaults = {
-  ticketFirstName: '',
-  ticketLastName: '',
-  ticketAge: '',
-  ticketIdNumber: '',
-  ticketTelNumber: '',
-  ticketAddress: '',
-  ticketReason: 'Seçiniz',
-  ticketReasonDetail: '',
 };
 
 const ticketSchema = yup.object().shape({
@@ -58,6 +51,12 @@ const ticketSchema = yup.object().shape({
     .min(20, '*En az 20 karakter')
     .max(100, '*En fazla 100 karakter')
     .required('*Gerekli alan'),
+  ticketItemCode: yup
+    .string()
+    .trim('*Ürün kodunu boş bırakamazsınız')
+    .min(5, '*Ürün kodu en az 5 en fazla 10 karakterden oluşmalı')
+    .max(10, '*Ürün kodu en az 5 en fazla 10 karakterden oluşmalı')
+    .required('*Gerekli alan'),
   ticketReason: yup.string().required('*Gerekli alan'),
   ticketReasonDetail: yup
     .string()
@@ -77,4 +76,4 @@ const ticketSchema = yup.object().shape({
     .required(),
 });
 
-export { ticketSchema, newTicketFormDefaults };
+export default ticketSchema;
