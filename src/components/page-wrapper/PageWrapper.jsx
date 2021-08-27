@@ -15,8 +15,6 @@ export default function PageWrapper({ children }) {
     }, 100);
   }, [pathname]);
 
-  useEffect(() => {}, []);
-
   return (
     <div ref={pageRef} className="page">
       {children}

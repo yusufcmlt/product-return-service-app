@@ -8,7 +8,7 @@ function useAuthContext() {
 }
 
 function AuthProvider({ children }) {
-  const [isAdmin, setAdmin] = useLocalStorage(false);
+  const [isAdmin, setAdmin] = useLocalStorage('isAdmin', false);
 
   const loginAsAdmin = () => {
     setAdmin(true);

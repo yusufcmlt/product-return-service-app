@@ -57,7 +57,7 @@ const adminLogin = async (adminCredentials, successCall, errorCall) => {
   }
 };
 
-const getAdminTickets = async (successCall, errorCall) => {
+const getAdminTickets = (successCall) => {
   // Get admin tickets and send to context using successCall
   const adminTickets = [];
 
@@ -71,8 +71,9 @@ const getAdminTickets = async (successCall, errorCall) => {
       successCall(adminTickets);
     })
     .catch((error) => {
-      errorCall(error);
+      console.error(error);
     });
 };
+
 export { addNewTicket, checkTicketNumber, adminLogin, getAdminTickets, database };
 export default firebase;
