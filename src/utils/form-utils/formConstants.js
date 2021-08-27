@@ -14,6 +14,11 @@ const searchFormDefaults = {
   ticketSearch: '',
 };
 
+const adminFormDefaults = {
+  adminUserName: '',
+  adminPassword: '',
+};
+
 const ticketStatusMessage = {
   pending: ' Bekliyor',
   rejected: ' Reddedildi',
@@ -22,4 +27,10 @@ const ticketStatusMessage = {
 
 const newTicketFormOptions = ['Ürün ulaşmadı', 'Eksik ürün', 'Hasarlı ürün', 'Yanlış ürün'];
 
-export { newTicketFormDefaults, newTicketFormOptions, searchFormDefaults, ticketStatusMessage };
+export {
+  newTicketFormDefaults,
+  newTicketFormOptions,
+  searchFormDefaults,
+  ticketStatusMessage,
+  adminFormDefaults,
+};

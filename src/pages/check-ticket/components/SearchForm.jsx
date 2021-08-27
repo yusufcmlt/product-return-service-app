@@ -23,6 +23,8 @@ const SearchForm = () => {
     mode: 'all',
     defaultValues: { searchFormDefaults },
   });
+
+  // Error state
   const [isErrorShown, setErrorShown] = useState(false);
 
   const searchTicket = (data) => {
