@@ -12,8 +12,10 @@ function TicketProvider({ children }) {
   const createTicket = (ticket = {}) => {
     setTicketData(ticket);
   };
+  const checkTicketExistInContext = (ticketId) =>
+    ticketData && ticketData.ticketDatabaseId === ticketId;
 
-  const value = { ticketData, createTicket };
+  const value = { ticketData, createTicket, checkTicketExistInContext };
 
   return <TicketContext.Provider value={value}>{children}</TicketContext.Provider>;
 }

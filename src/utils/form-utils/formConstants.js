@@ -14,6 +14,12 @@ const searchFormDefaults = {
   ticketSearch: '',
 };
 
+const ticketStatusMessage = {
+  pending: ' Bekliyor',
+  rejected: ' Reddedildi',
+  accepted: ' Kabul edildi',
+};
+
 const newTicketFormOptions = ['Ürün ulaşmadı', 'Eksik ürün', 'Hasarlı ürün', 'Yanlış ürün'];
 
-export { newTicketFormDefaults, newTicketFormOptions, searchFormDefaults };
+export { newTicketFormDefaults, newTicketFormOptions, searchFormDefaults, ticketStatusMessage };

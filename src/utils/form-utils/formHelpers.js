@@ -22,9 +22,17 @@ const modifyReturnFormData = (data) => {
   const ticketCreatedAt = new Date();
   const ticketModifiedAt = new Date();
   const ticketStatus = 'pending';
+  const ticketResponseMessage = 'Süreç başlatıldı.';
 
   // Return a new object for database
-  return { ...data, ticketFile, ticketCreatedAt, ticketModifiedAt, ticketStatus };
+  return {
+    ...data,
+    ticketFile,
+    ticketCreatedAt,
+    ticketModifiedAt,
+    ticketStatus,
+    ticketResponseMessage,
+  };
 };
 
 export default modifyReturnFormData;
