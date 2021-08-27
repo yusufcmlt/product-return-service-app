@@ -18,7 +18,7 @@ const addNewTicket = async (ticketData, successCall, errorCall) => {
   }
 };
 
-const checkTicketNumber = async (ticketId, foundCall, notFoundCall) => {
+const checkTicketNumber = async (ticketId, foundCall, notFoundCall = () => {}) => {
   try {
     const ticketData = await ticketsRef.doc(ticketId).get();
     if (ticketData.exists) {

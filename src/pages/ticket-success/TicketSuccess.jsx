@@ -1,9 +1,11 @@
-import { TitleHeading, SubHeading } from 'components/headings/Headings';
-import { useTicketContext } from 'contexts/TicketContext';
-
 import React from 'react';
 import QRCode from 'react-qr-code';
+import { useTicketContext } from 'contexts/TicketContext';
 import { Redirect } from 'react-router-dom';
+
+import { HOMEPAGE } from 'routes/RouteContstants';
+
+import { TitleHeading, SubHeading } from 'components/headings/Headings';
 import ProcessDetail from './components/ProcessDetail';
 
 import './TicketSuccess.style.scss';
@@ -27,7 +29,7 @@ export default function TicketSuccess() {
           </p>
         </section>
       ) : (
-        <Redirect to="/" />
+        <Redirect to={HOMEPAGE} />
       )}
     </>
   );
