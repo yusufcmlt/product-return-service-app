@@ -1,0 +1,41 @@
+@import '/src/styles/variables';
+.ticket-block {
+  height: 7.5rem;
+  border-radius: 1rem;
+
+  box-shadow: $box-shadow-1;
+  background-color: $color-gray;
+  border: 1px solid transparent;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    transform: scale(1.01);
+    border: 1px solid $color-green;
+  }
+  &:active {
+    transform: translateY(2px);
+  }
+
+  &__col {
+    &::selection {
+      display: none;
+    }
+
+    &--accepted {
+      color: $color-green;
+    }
+    &--pending {
+      color: $color-blue;
+    }
+    &--rejected {
+      color: $color-red-2;
+    }
+  }
+}

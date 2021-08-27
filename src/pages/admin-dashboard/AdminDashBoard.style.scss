@@ -1,0 +1,28 @@
+@import '/src/styles/variables';
+.admin-dashboard-page {
+  display: grid;
+  grid-template-rows: min-content 20rem minmax(30rem, 1fr);
+  row-gap: 2rem;
+  .stats-container {
+    width: 100rem;
+
+    display: grid;
+    grid-template-columns: repeat(4, min-content);
+
+    justify-content: space-between;
+  }
+  .tickets-container {
+    display: grid;
+    grid-template-rows: 5rem 1fr;
+    row-gap: 1rem;
+    .tickets-header {
+      align-self: center;
+      display: flex;
+      justify-content: space-around;
+
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-bottom: 1px solid $color-gray-dark;
+    }
+  }
+}

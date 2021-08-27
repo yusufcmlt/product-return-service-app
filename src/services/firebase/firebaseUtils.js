@@ -7,7 +7,7 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.firestore();
 
 const ticketsRef = database.collection('tickets');
-// const usersRef = database.collection("users");
+const usersRef = database.collection('users');
 
 const addNewTicket = async (ticketData, successCall, errorCall) => {
   try {
@@ -27,10 +27,52 @@ const checkTicketNumber = async (ticketId, foundCall, notFoundCall = () => {}) =
       notFoundCall();
     }
   } catch (error) {
-    console.log(error);
     notFoundCall(error);
   }
 };
 
-export { addNewTicket, checkTicketNumber, database };
+const adminLogin = async (adminCredentials, successCall, errorCall) => {
+  // Get form user data
+  const { adminUserName, adminPassword } = adminCredentials;
+
+  try {
+    // Get admin user data
+    const adminRef = await usersRef.doc('admin-kodluyoruz').get();
+    if (adminRef.exists) {
+      // Get database user data
+      const { userName, password } = adminRef.data();
+
+      // Control sent form data with database
+      const userNameCheck = adminUserName === userName;
+      const passwordCheck = adminPassword === password;
+
+      if (userNameCheck && passwordCheck) {
+        successCall();
+      } else {
+        errorCall();
+      }
+    }
+  } catch (error) {
+    errorCall(error);
+  }
+};
+
+const getAdminTickets = async (successCall, errorCall) => {
+  // Get admin tickets and send to context using successCall
+  const adminTickets = [];
+
+  // Admin tickets and id values
+  ticketsRef
+    .get()
+    .then((ticketSnapshot) => {
+      ticketSnapshot.forEach((ticketDoc) => {
+        adminTickets.push({ id: ticketDoc.id, ...ticketDoc.data() });
+      });
+      successCall(adminTickets);
+    })
+    .catch((error) => {
+      errorCall(error);
+    });
+};
+export { addNewTicket, checkTicketNumber, adminLogin, getAdminTickets, database };
 export default firebase;
