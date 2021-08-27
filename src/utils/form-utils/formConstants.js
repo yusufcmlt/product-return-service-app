@@ -6,7 +6,7 @@ const newTicketFormDefaults = {
   ticketTelNumber: '',
   ticketAddress: '',
   ticketItemCode: '',
-  ticketReason: 'Ürün ulaşmadı',
+  ticketReason: 'notReceived',
   ticketReasonDetail: '',
 };
 
@@ -18,14 +18,35 @@ const adminFormDefaults = {
   adminUserName: '',
   adminPassword: '',
 };
-
-const ticketStatusMessage = {
-  pending: ' Bekliyor',
-  rejected: ' Reddedildi',
-  accepted: ' Kabul edildi',
+const ticketUpdateFormDefaults = {
+  ticketStatus: 'pending',
+  ticketResponseMessage: '',
 };
 
-const newTicketFormOptions = ['Ürün ulaşmadı', 'Eksik ürün', 'Hasarlı ürün', 'Yanlış ürün'];
+const ticketStatusMessage = {
+  pending: 'Bekliyor',
+  rejected: 'Reddedildi',
+  accepted: 'Kabul edildi',
+};
+
+// const ticketUpdateFormOptions = ['Bekliyor', 'Reddedildi', 'Kabul Edildi'];
+
+const ticketStatusOptions = Object.keys(ticketStatusMessage).map((key) => ({
+  key,
+  value: ticketStatusMessage[key],
+}));
+
+const ticketFormReasonMessages = {
+  notReceived: 'Ürün ulaşmadı',
+  missingItem: 'Eksik ürün',
+  damagedItem: 'Hasarlı ürün',
+  wrongItem: 'Yanlış ürün',
+};
+
+const newTicketFormOptions = Object.keys(ticketFormReasonMessages).map((key) => ({
+  key,
+  value: ticketFormReasonMessages[key],
+}));
 
 export {
   newTicketFormDefaults,
@@ -33,4 +54,7 @@ export {
   searchFormDefaults,
   ticketStatusMessage,
   adminFormDefaults,
+  ticketStatusOptions,
+  ticketFormReasonMessages,
+  ticketUpdateFormDefaults,
 };

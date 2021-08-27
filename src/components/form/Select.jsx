@@ -6,7 +6,9 @@ const Select = ({ id, options }) => {
   return (
     <select id={id} {...register(id)}>
       {options.map((option) => (
-        <option key={`${id}-${option}`}>{option}</option>
+        <option key={`${id}-${option.value}`} value={option.key}>
+          {option.value}
+        </option>
       ))}
     </select>
   );
