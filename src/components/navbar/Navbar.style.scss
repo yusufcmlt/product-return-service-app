@@ -5,4 +5,22 @@
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-items: center;
+
+  button {
+    text-decoration: none;
+    font-size: 1.7rem;
+    font-family: $font-header;
+    font-weight: 700;
+    background-color: $color-white;
+    border: none;
+    cursor: pointer;
+    color: $color-black;
+
+    border-bottom: 0.2rem solid transparent;
+    transition: 0.3s;
+
+    &:hover {
+      border-bottom: 0.2rem solid black;
+    }
+  }
 }
