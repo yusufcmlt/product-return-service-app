@@ -7,6 +7,9 @@
   &--rejected {
     color: $color-red-1;
   }
+  &--accepted {
+    color: $color-green;
+  }
 }
 .ticket-response-page {
   &__response-detail {
