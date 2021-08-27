@@ -75,5 +75,21 @@ const getAdminTickets = (successCall) => {
     });
 };
 
-export { addNewTicket, checkTicketNumber, adminLogin, getAdminTickets, database };
+const updateTicketInfo = (ticketId, ticketData, successCall) => {
+  const { ticketStatus, ticketResponseMessage } = ticketData;
+
+  const updatedTicketRef = ticketsRef.doc(ticketId);
+
+  updatedTicketRef
+    .update({
+      ticketStatus,
+      ticketResponseMessage,
+      modifiedAt: new Date(),
+    })
+    .then(() => {
+      successCall();
+    });
+};
+
+export { addNewTicket, checkTicketNumber, adminLogin, getAdminTickets, updateTicketInfo, database };
 export default firebase;

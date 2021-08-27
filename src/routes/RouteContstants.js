@@ -9,7 +9,7 @@ const PUBLIC_TICKET_ITEM = '/basvuru';
 // ADMIN
 const ADMIN = '/admin';
 const ADMIN_TICKET_LIST = '/admin/basvuru-listesi';
-const ADMIN_TICKET_ITEM = '/admin/basvuru';
+const ADMIN_TICKET_ITEM = '/admin/basvuru/';
 
 export {
   HOMEPAGE,

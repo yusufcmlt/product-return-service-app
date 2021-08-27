@@ -3,7 +3,6 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { ADMIN } from './RouteContstants';
 
-// screen if you're not yet authenticated.
 function PrivateRoute({ children, ...props }) {
   const { isAdmin } = useAuthContext();
 

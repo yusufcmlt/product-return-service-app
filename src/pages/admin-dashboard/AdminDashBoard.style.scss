@@ -25,4 +25,22 @@
       border-bottom: 1px solid $color-gray-dark;
     }
   }
+
+  .dashboard {
+    &__edit {
+      display: grid;
+      grid-template-rows: 5rem 40rem;
+      grid-template-columns: 50rem 50rem;
+    }
+    &__ticket-detail {
+      grid-row: 2/3;
+    }
+    &__edit-ticket {
+      grid-row: 2/3;
+      button {
+        width: 50rem;
+        justify-self: center;
+      }
+    }
+  }
 }

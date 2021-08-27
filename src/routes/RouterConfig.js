@@ -31,9 +31,11 @@ export default function RouterConfig() {
       <Route exact path={PUBLIC_TICKET_ITEM} component={TicketResponse} />
       <Route exact path={`${PUBLIC_TICKET_ITEM}/:id`} component={TicketResponse} />
       <Route exact path={ADMIN} component={Admin} />
-
       <AdminTicketProvider>
         <PrivateRoute exact path={ADMIN_TICKET_LIST}>
+          <AdminDashBoard />
+        </PrivateRoute>
+        <PrivateRoute exact path={`${ADMIN_TICKET_LIST}/:id`}>
           <AdminDashBoard />
         </PrivateRoute>
       </AdminTicketProvider>

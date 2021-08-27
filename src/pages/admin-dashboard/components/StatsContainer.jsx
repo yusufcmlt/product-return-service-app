@@ -17,7 +17,7 @@ export default function StatsContainer() {
       />
       <StatCard
         title="Bekleyen"
-        detail={filteredList.pending.length}
+        detail={filteredList?.pending?.length || '0'}
         color="blue"
         onClick={() => {
           changeSelectedStatus('pending');
@@ -25,7 +25,7 @@ export default function StatsContainer() {
       />
       <StatCard
         title="Kabul Edilen"
-        detail={filteredList?.accepted || '0'}
+        detail={filteredList?.accepted?.length || '0'}
         color="green"
         onClick={() => {
           changeSelectedStatus('accepted');
@@ -33,7 +33,7 @@ export default function StatsContainer() {
       />
       <StatCard
         title="Reddedilen"
-        detail={filteredList.rejected.length}
+        detail={filteredList?.rejected?.length || '0'}
         color="red"
         onClick={() => {
           changeSelectedStatus('rejected');

@@ -2,9 +2,10 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { getAdminTickets } from 'services/firebase/firebaseUtils';
 
-// Admin tickets context
-// Using only in private routes
-
+/**
+ * Admin tickets context
+ * Using only in private routes
+ */
 const AdminTicketContext = createContext();
 
 function useAdminTicketContext() {
@@ -12,8 +13,8 @@ function useAdminTicketContext() {
 }
 
 function AdminTicketProvider({ children }) {
-  const [ticketList, setTicketList] = useState('');
-  const [filteredList, setFilteredList] = useState('');
+  const [ticketList, setTicketList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState('');
   const [isLoading, setLoading] = useState(true);
 
@@ -24,7 +25,9 @@ function AdminTicketProvider({ children }) {
     setLoading(false);
   };
 
+  // Function to call with buttons etc.
   const loadTickets = () => {
+    // firestore
     getAdminTickets(createTicketList);
   };
 
@@ -34,7 +37,8 @@ function AdminTicketProvider({ children }) {
   const changeSelectedStatus = (status) => {
     setSelectedStatus(status);
   };
-  // Filtering data by ticket's status
+
+  // Grouping data by ticket status
   const filterTicketsByStatus = (ticketArray) => {
     if (ticketArray) {
       const filteredList = ticketArray.reduce((prevTickets, currentTickets) => {
@@ -48,14 +52,33 @@ function AdminTicketProvider({ children }) {
     }
   };
 
+  // Get individual filter with id;
+  const getIndividualTicket = (ticketId) => {
+    if (ticketList.length) {
+      return ticketList.find(({ id }) => id === ticketId);
+    }
+    return '';
+  };
+
+  // Get data on mount
   useEffect(() => {
-    loadTickets();
+    if (!ticketList.length) {
+      loadTickets();
+    }
     return () => {
       deleteTicketList();
     };
   }, []);
 
-  const value = { ticketList, changeSelectedStatus, selectedStatus, filteredList, isLoading };
+  const value = {
+    ticketList,
+    changeSelectedStatus,
+    selectedStatus,
+    filteredList,
+    isLoading,
+    getIndividualTicket,
+    loadTickets,
+  };
 
   return <AdminTicketContext.Provider value={value}>{children}</AdminTicketContext.Provider>;
 }
