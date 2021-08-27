@@ -1,20 +1,21 @@
-import { TicketProvider } from 'contexts/TicketContext';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import App from './App';
-import { LanguageProvider } from './contexts/LanguageContext';
+
+import { TicketProvider } from 'contexts/TicketContext';
+import App from 'App';
 
 import './index.scss';
+import { AuthProvider } from 'contexts/AuthContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <LanguageProvider>
+      <AuthProvider>
         <TicketProvider>
           <App />
         </TicketProvider>
-      </LanguageProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
