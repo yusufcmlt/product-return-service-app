@@ -1,22 +1,19 @@
-import TicketBlock from 'components/ticket-block/TicketBlock';
 import React from 'react';
+import { useAdminTicketContext } from 'contexts/AdminTicketsContext';
+import TicketBlock from 'components/ticket-block/TicketBlock';
+
 import TicketsHeader from './TicketsHeader';
 
-const mockData = {
-  id: 123456578,
-  ticketFirstName: 'Yusuf',
-  ticketLastName: 'Cemal',
-  ticketReason: 'Hasarli',
-  ticketStatus: 'pending',
-};
 export default function TicketsContainer() {
+  const { ticketList, filteredList, selectedStatus } = useAdminTicketContext();
+
   return (
     <div className="tickets-container">
       <TicketsHeader />
-      <TicketBlock ticketData={mockData} />
-      <TicketBlock ticketData={mockData} />
-      <TicketBlock ticketData={mockData} />
-      <TicketBlock ticketData={mockData} />
+      {selectedStatus
+        ? filteredList[selectedStatus] &&
+          filteredList[selectedStatus].map((ticket) => <TicketBlock ticketData={ticket} />)
+        : ticketList.map((ticket) => <TicketBlock ticketData={ticket} />)}
     </div>
   );
 }

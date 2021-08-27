@@ -13,7 +13,7 @@
   }
   .tickets-container {
     display: grid;
-    grid-template-rows: 5rem 1fr;
+    grid-template-rows: 5rem min-content;
     row-gap: 1rem;
     .tickets-header {
       align-self: center;
