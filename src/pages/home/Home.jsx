@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useLanguage } from 'contexts/LanguageContext';
-import { languagesButtons, languagesHeadings } from 'utils/languages/languages';
+
 import { CHECK_TICKET, NEW_TICKET } from 'routes/RouteContstants';
 
 import Button from 'components/button/Button';
@@ -11,10 +10,6 @@ import CustomerLogo from './components/CustomerLogo';
 import './Home.style.scss';
 
 export default function Home() {
-  const { language } = useLanguage();
-  const { itemReturnSystemTitle, itemReturnSystemSubtitle } = languagesHeadings[language];
-  const { newReturn, checkReturnStatus } = languagesButtons[language];
-
   const history = useHistory();
 
   const navigateTo = (path) => {
@@ -24,17 +19,19 @@ export default function Home() {
   return (
     <section data-testid="app-homepage" className="homepage">
       <div className="homepage__content">
-        <TitleHeading>{itemReturnSystemTitle}</TitleHeading>
-        <SubHeading>{itemReturnSystemSubtitle}</SubHeading>
+        <TitleHeading>Ürün İade Sistemi</TitleHeading>
+        <SubHeading>
+          Ürün iade işlemi başlatabilir veya iade sürecinizi takip edebilirsiniz.
+        </SubHeading>
         <div className="homepage__content__buttons">
           <Button
-            buttonText={newReturn}
+            buttonText="Yeni İade"
             onClickFunction={() => {
               navigateTo(NEW_TICKET);
             }}
           />
           <Button
-            buttonText={checkReturnStatus}
+            buttonText="İade Durum Sorgula"
             onClickFunction={() => {
               navigateTo(CHECK_TICKET);
             }}
