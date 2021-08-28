@@ -1,6 +1,11 @@
+@import '/src/styles/variables';
 .header {
   display: grid;
   grid-template-columns: [logo-start] 6fr [logo-end navbar-start] 2fr [navbar-end];
 
   padding: 1rem 4rem;
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-columns: [logo-start] max-content [logo-end navbar-start] max-content [navbar-end];
+    justify-content: space-between;
+  }
 }

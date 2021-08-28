@@ -3,6 +3,10 @@
   display: grid;
   grid-template-rows: min-content 20rem minmax(30rem, 1fr);
   row-gap: 2rem;
+  @media only screen and (max-width: $bp-large) {
+    grid-template-rows: min-content min-content minmax(30rem, 1fr);
+  }
+
   .stats-container {
     width: 100rem;
 
@@ -10,6 +14,17 @@
     grid-template-columns: repeat(4, min-content);
 
     justify-content: space-between;
+
+    @media only screen and (max-width: $bp-large) {
+      grid-template-columns: repeat(2, min-content);
+      justify-content: center;
+      row-gap: 2rem;
+      column-gap: 2rem;
+    }
+    @media only screen and (max-width: $bp-medium) {
+      grid-template-columns: min-content;
+      width: 95vw;
+    }
   }
   .tickets-container {
     display: grid;
@@ -31,12 +46,32 @@
       display: grid;
       grid-template-rows: 5rem 40rem;
       grid-template-columns: 50rem 50rem;
+      @media only screen and (max-width: $bp-medium) {
+        display: flex;
+        flex-wrap: wrap;
+        h1 {
+          flex-basis: 100%;
+          order: 0;
+        }
+        h3 {
+          flex-basis: 95%;
+          order: 1;
+        }
+      }
     }
     &__ticket-detail {
       grid-row: 2/3;
+      @media only screen and (max-width: $bp-medium) {
+        flex-basis: 95%;
+        order: 3;
+      }
     }
     &__edit-ticket {
       grid-row: 2/3;
+      @media only screen and (max-width: $bp-medium) {
+        flex-basis: 95%;
+        order: 2;
+      }
       button {
         width: 50rem;
         justify-self: center;

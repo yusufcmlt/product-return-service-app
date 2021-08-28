@@ -12,15 +12,28 @@
     column-gap: 10rem;
 
     justify-content: space-between;
+
+    @media only screen and (max-width: $bp-large) {
+      width: 95vw;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
   .form {
     &__part {
       &--personal {
         grid-row: full-start/full-end;
+        @media only screen and (max-width: $bp-large) {
+          flex-basis: 95%;
+        }
       }
       &--item {
         grid-row: full-start/half-end;
+        @media only screen and (max-width: $bp-large) {
+          flex-basis: 95%;
+        }
       }
       &--button {
         grid-column: item-start/item-end;
@@ -32,6 +45,13 @@
           min-width: 50rem;
           max-width: 50rem;
         }
+        @media only screen and (max-width: $bp-large) {
+          flex-basis: 95%;
+          button {
+            min-width: 90vw;
+            max-width: unset;
+          }
+        }
       }
     }
     &__status {
@@ -40,6 +60,9 @@
       font-weight: 600;
       font-size: 2rem;
       grid-column: personal-start/item-end;
+      @media only screen and (max-width: $bp-large) {
+        grid-row: status-start/status-end;
+      }
       &--pending {
         color: $color-blue;
       }

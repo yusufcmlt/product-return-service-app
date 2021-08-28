@@ -5,13 +5,20 @@
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-items: center;
+  @media only screen and (max-width: $bp-medium) {
+    column-gap: 1.5rem;
+  }
+  @media only screen and (max-width: $bp-small) {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   button {
     text-decoration: none;
     font-size: 1.7rem;
     font-family: $font-header;
     font-weight: 700;
-    background-color: $color-white;
+    background-color: transparent;
     border: none;
     cursor: pointer;
     color: $color-black;

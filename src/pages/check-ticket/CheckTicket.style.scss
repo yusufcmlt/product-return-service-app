@@ -1,6 +1,13 @@
+@import '/src//styles/variables';
 .check-ticket-page {
   display: grid;
   justify-items: center;
+  @media only screen and (max-width: $bp-small) {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+  }
   &__search-box {
     padding: 2rem 0;
 
@@ -10,10 +17,16 @@
 
     input {
       width: 60rem;
+      @media only screen and (max-width: $bp-small) {
+        width: 85vw;
+      }
     }
     button {
       justify-self: center;
       width: 60rem;
+      @media only screen and (max-width: $bp-small) {
+        width: 95vw;
+      }
     }
     p {
       text-align: center;

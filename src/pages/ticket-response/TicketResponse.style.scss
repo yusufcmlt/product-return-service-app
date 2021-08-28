@@ -18,5 +18,14 @@
     align-items: center;
     width: 120rem;
     height: 40rem;
+    @media only screen and (max-width: $bp-medium) {
+      width: 95vw;
+      h1 {
+        font-size: 3.5rem;
+      }
+      h3 {
+        font-size: 1.8rem;
+      }
+    }
   }
 }
