@@ -1,5 +1,6 @@
+/* eslint-disable */
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { AdminTicketProvider } from 'contexts/AdminTicketsContext';
 
 import Home from 'pages/home/Home';
@@ -10,6 +11,9 @@ import TicketResponse from 'pages/ticket-response/TicketResponse';
 import Admin from 'pages/admin/Admin';
 import AdminDashBoard from 'pages/admin-dashboard/AdminDashBoard';
 
+// import NotFoundRoute from './NotFoundRoute';
+import PrivateRoute from './PrivateRoute';
+
 import {
   ADMIN,
   ADMIN_TICKET_LIST,
@@ -19,7 +23,7 @@ import {
   PUBLIC_TICKET_ITEM,
   TICKET_SUCCESS,
 } from './RouteContstants';
-import PrivateRoute from './PrivateRoute';
+import NotFoundRoute from './NotFoundRoute';
 
 export default function RouterConfig() {
   return (
@@ -31,14 +35,15 @@ export default function RouterConfig() {
       <Route exact path={PUBLIC_TICKET_ITEM} component={TicketResponse} />
       <Route exact path={`${PUBLIC_TICKET_ITEM}/:id`} component={TicketResponse} />
       <Route exact path={ADMIN} component={Admin} />
-      <AdminTicketProvider>
-        <PrivateRoute exact path={ADMIN_TICKET_LIST}>
-          <AdminDashBoard />
-        </PrivateRoute>
-        <PrivateRoute exact path={`${ADMIN_TICKET_LIST}/:id`}>
-          <AdminDashBoard />
-        </PrivateRoute>
-      </AdminTicketProvider>
+      <PrivateRoute exact path={ADMIN_TICKET_LIST}>
+        <AdminDashBoard />
+      </PrivateRoute>
+      <PrivateRoute exact path={`${ADMIN_TICKET_LIST}/:id`}>
+        <AdminDashBoard />
+      </PrivateRoute>
+      <Route path="*">
+        <NotFoundRoute />
+      </Route>
     </Switch>
   );
 }
