@@ -1,16 +1,17 @@
 @import '../../styles/variables';
 
 .navbar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   align-items: center;
-  justify-items: center;
+  justify-content: space-around;
+  z-index: 5;
   @media only screen and (max-width: $bp-medium) {
     column-gap: 1.5rem;
   }
   @media only screen and (max-width: $bp-small) {
     display: flex;
     flex-wrap: wrap;
+    padding: 2rem 0;
   }
 
   button {

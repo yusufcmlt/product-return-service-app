@@ -7,5 +7,9 @@
   @media only screen and (max-width: $bp-medium) {
     grid-template-columns: [logo-start] max-content [logo-end navbar-start] max-content [navbar-end];
     justify-content: space-between;
+    padding: 1rem;
+  }
+  @media only screen and (max-width: $bp-small) {
+    grid-template-columns: 1fr;
   }
 }
