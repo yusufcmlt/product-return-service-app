@@ -1,14 +1,14 @@
 /* eslint-disable */
 import React from 'react';
 import { render, screen, fireEvent, cleanup, act } from '@testing-library/react';
-import NewReturn from './NewReturn';
+import NewTicket from './NewTicket';
 import TestWrapper from 'components/test-wrapper/TestWrapper';
 
-describe('New return page form tests', () => {
+describe('New ticket page form tests', () => {
   beforeEach(() => {
     render(
       <TestWrapper>
-        <NewReturn />
+        <NewTicket />
       </TestWrapper>
     );
   });

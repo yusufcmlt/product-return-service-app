@@ -1,15 +1,15 @@
 import React from 'react';
 
 import { TitleHeading } from 'components/headings/Headings';
-import NewReturnForm from './components/new-return-form/NewReturnForm';
+import NewTicketForm from './components/new-ticket-form/NewTicketForm';
 
-import './NewReturn.style.scss';
+import './NewTicket.style.scss';
 
-export default function NewReturn() {
+export default function NewTicket() {
   return (
     <section className="new-return-page" data-testid="app-new-return-page">
       <TitleHeading>Yeni bir iade süreci başlatın</TitleHeading>
-      <NewReturnForm />
+      <NewTicketForm />
     </section>
   );
 }

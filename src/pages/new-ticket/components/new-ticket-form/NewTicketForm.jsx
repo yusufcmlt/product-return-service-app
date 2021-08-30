@@ -6,17 +6,15 @@ import { useTicketContext } from 'contexts/TicketContext';
 
 import useYupValidationResolver from 'hooks/useYupValidationResolver';
 
-import { newTicketFormDefaults } from 'utils/form-utils/formConstants';
 import ticketSchema from 'utils/form-utils/schemas/ticketSchema';
 import modifyReturnFormData from 'utils/form-utils/formHelpers';
+import newTicketFormDefaults from 'utils/form-utils/defaults/newReturnTicketDefaults';
 import { TICKET_SUCCESS } from 'routes/RouteContstants';
 
 import Form from 'components/form/Form';
 import Button from 'components/button/Button';
 import FormPersonalInfo from './FormPersonalInfo';
 import FormItemInfo from './FormItemInfo';
-
-import '../../NewReturn.style.scss';
 
 export default function NewReturnForm() {
   const history = useHistory();
