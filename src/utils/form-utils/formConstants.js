@@ -25,6 +25,7 @@ const ticketDetailTitles = {
   id: 'İade kodu',
   ticketCreatedAt: 'Oluşturma tarihi',
   ticketModifiedAt: 'Son güncelleme tarihi',
+  ticketLink: 'Link',
 };
 
 const ticketStatusOptions = Object.keys(ticketStatusMessage).map((key) => ({

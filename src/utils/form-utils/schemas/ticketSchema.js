@@ -42,7 +42,7 @@ const ticketSchema = yup.object().shape({
     .required('*Gerekli alan'),
   ticketTelNumber: yup
     .string()
-    .min(11, '*Telefon no en az 10 en fazla 11 rakamdan oluşmalı')
+    .min(10, '*Telefon no en az 10 en fazla 11 rakamdan oluşmalı')
     .max(11, '*Telefon no en az 10 en fazla 11 rakamdan oluşmalı')
     .matches(numberMatcher, '*Telefon no sadece rakamlardan oluşmalı')
     .required('*Gerekli alan'),
