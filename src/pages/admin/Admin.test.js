@@ -1,42 +1,44 @@
 import '@testing-library/jest-dom';
 
 import React from 'react';
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, fireEvent, cleanup } from '@testing-library/react';
 
-import Navbar from 'components/navbar/Navbar';
 import TestWrapper from 'components/test-wrapper/TestWrapper';
 import Admin from './Admin';
+import LoginForm from './components/LoginForm';
 
 describe('login page tests', () => {
-  beforeEach(() => {
+  test('if admin page is not present when isAdmin is true', () => {
     render(
-      <TestWrapper>
-        <Navbar />
+      <TestWrapper authValues={{ isAdmin: true }}>
         <Admin />
       </TestWrapper>
     );
-  });
-  test('if renders admin page', () => {
-    expect(screen.getByTestId('test-admin-page')).toBeInTheDocument();
+    expect(screen.queryByTestId('test-admin-page')).not.toBeInTheDocument();
   });
 
   test('if shows error on login form using wrong credentials', async () => {
+    let mockErrorShown = false;
+    const mockSubmit = () => {
+      console.log('called');
+      mockErrorShown = true;
+    };
+
+    render(<LoginForm onSubmit={mockSubmit} isErrorShown={mockErrorShown} />);
+
     const userNameField = screen.getByLabelText('Kullanıcı adınız');
     const passwordField = screen.getByLabelText('Şifreniz');
     const button = screen.getByRole('button');
-
-    // const errorColor = '##b94545';
 
     await act(async () => {
       fireEvent.change(userNameField, { target: { value: 'aRandomUser' } });
       fireEvent.change(passwordField, { target: { value: 'aRandomPassword' } });
     });
     fireEvent.click(button);
-    // expect(screen.findByTestId('test-stattext-adminUserName')).toHaveTextContent(
-    //   'Giriş yapılamadı'
-    // );
-    expect(await screen.findByTestId('test-stattext-adminUserName')).toHaveStyle(
-      'visibility:visible'
-    );
+    cleanup();
+    console.log(mockErrorShown);
+    render(<LoginForm onSubmit={mockSubmit} isErrorShown={mockErrorShown} />);
+
+    expect(screen.getByTestId('test-stattext-adminUserName')).toHaveStyle('visibility:visible');
   });
 });

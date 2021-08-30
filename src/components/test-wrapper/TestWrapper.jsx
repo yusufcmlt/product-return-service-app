@@ -4,16 +4,17 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
 import { TicketProvider } from 'contexts/TicketContext';
-import { AuthProvider } from 'contexts/AuthContext';
+import { AuthContext } from 'contexts/AuthContext';
 
 // Router and Context wrapper for testing purposes
 export const testHistory = createMemoryHistory();
-export default function TestWrapper({ children }) {
+
+export default function TestWrapper({ children, authValues }) {
   return (
     <Router history={testHistory}>
-      <AuthProvider>
+      <AuthContext.Provider value={{ ...authValues }}>
         <TicketProvider>{children}</TicketProvider>
-      </AuthProvider>
+      </AuthContext.Provider>
     </Router>
   );
 }

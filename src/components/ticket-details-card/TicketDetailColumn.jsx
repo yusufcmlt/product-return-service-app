@@ -10,7 +10,7 @@ export default function TicketDetailColumn({ infoArray, ticketData }) {
         if (ticketData[ticketInfo]) {
           const title = ticketDetailTitles[ticketInfo];
           const detail = ticketData[ticketInfo];
-          return <InfoText title={title} detail={detail} />;
+          return <InfoText key={`${ticketData.id}-${ticketInfo}`} title={title} detail={detail} />;
         }
         return '';
       })}

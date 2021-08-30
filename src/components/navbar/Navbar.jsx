@@ -14,18 +14,15 @@ export default function Navbar() {
       <Link to={HOMEPAGE}>Anasayfa</Link>
       {isAdmin ? (
         <>
-          <Link to={ADMIN_TICKET_LIST}>Yönetim</Link>
-          <button
-            type="button"
-            onClick={() => {
-              logout();
-            }}
-          >
+          <Link data-testid="test-dashboard-link" to={ADMIN_TICKET_LIST}>
+            Yönetim
+          </Link>
+          <button data-testid="test-logout-button" type="button" onClick={logout}>
             Çıkış yap
           </button>
         </>
       ) : (
-        <Link data-testid="navbar-link-admin" to={ADMIN}>
+        <Link data-testid="test-login-button" to={ADMIN}>
           Giriş Yap
         </Link>
       )}
