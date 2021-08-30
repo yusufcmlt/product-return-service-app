@@ -2,10 +2,10 @@
 
 .ticket-block {
   height: 7.5rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 
-  box-shadow: $box-shadow-1;
-  background-color: $color-gray;
+  box-shadow: $box-shadow-3;
+  background-color: lighten($color-gray, 5%);
   border: 1px solid transparent;
 
   display: flex;
@@ -19,7 +19,7 @@
   }
   &:hover {
     transform: scale(1.01);
-    background-color: $color-gray-input;
+
     border: 1px solid $color-green;
   }
   &:active {
