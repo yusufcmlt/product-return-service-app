@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import useYupValidationResolver from 'hooks/useYupValidationResolver';
@@ -6,18 +5,17 @@ import useYupValidationResolver from 'hooks/useYupValidationResolver';
 import Form from 'components/form/Form';
 import Button from 'components/button/Button';
 
-import { ticketStatusOptions, ticketUpdateFormDefaults } from 'utils/form-utils/formConstants';
+import { ticketStatusOptions } from 'utils/form-utils/formConstants';
 import ticketUpdateFormSchema from 'utils/form-utils/schemas/ticketUpdateFormSchema';
 import { useHistory } from 'react-router-dom';
 import { ADMIN_TICKET_LIST } from 'routes/RouteContstants';
 import { updateTicketInfo } from 'services/firebase/firebaseUtils';
 import { useAdminTicketContext } from 'contexts/AdminTicketsContext';
+import ticketUpdateFormDefaults from 'utils/form-utils/defaults/ticketUpdateFormDefaults';
 
-export default function EditTicketForm({ id = '' }) {
-  const { loadTickets } = useAdminTicketContext();
-
+export default function EditTicketForm({ id }) {
+  const { createTicketList } = useAdminTicketContext();
   const history = useHistory();
-
   const resolver = useYupValidationResolver(ticketUpdateFormSchema);
   const methods = useForm({
     resolver,
@@ -28,7 +26,7 @@ export default function EditTicketForm({ id = '' }) {
   const { errors, dirtyFields } = formState;
 
   const redirectAfterSubmit = () => {
-    loadTickets();
+    createTicketList();
     history.replace(ADMIN_TICKET_LIST);
   };
 

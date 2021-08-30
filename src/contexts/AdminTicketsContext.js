@@ -1,10 +1,15 @@
 /* eslint-disable */
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { getAdminTickets } from 'services/firebase/firebaseUtils';
+import { getTicketsList } from 'services/firebase/firebaseUtils';
+
+import {
+  groupTicketsByKey,
+  modifyTicketDataForDetail,
+} from 'utils/ticket-data-utils/ticketDataUtils';
 
 /**
  * Admin tickets context
- * Using only in private routes
+ * Used only in private routes
  */
 const AdminTicketContext = createContext();
 
@@ -19,37 +24,23 @@ function AdminTicketProvider({ children }) {
   const [isLoading, setLoading] = useState(true);
 
   // Get ticket data from database
-  const createTicketList = (ticketData) => {
-    setTicketList(ticketData);
-    filterTicketsByStatus(ticketData);
-    setLoading(false);
-  };
+  const createTicketList = () => {
+    getTicketsList().then((ticketData) => {
+      const groupedData = groupTicketsByKey(ticketData, 'ticketStatus');
+      const detailData = modifyTicketDataForDetail(ticketData);
 
-  // Function to call with buttons etc.
-  const loadTickets = () => {
-    // firestore
-    getAdminTickets(createTicketList);
+      setTicketList(detailData);
+      setFilteredList(groupedData);
+      setLoading(false);
+    });
   };
 
   const deleteTicketList = () => {
     setTicketList('');
   };
+
   const changeSelectedStatus = (status) => {
     setSelectedStatus(status);
-  };
-
-  // Grouping data by ticket status
-  const filterTicketsByStatus = (ticketArray) => {
-    if (ticketArray) {
-      const filteredList = ticketArray.reduce((prevTickets, currentTickets) => {
-        const { ticketStatus } = currentTickets;
-        return {
-          ...prevTickets,
-          [ticketStatus]: (prevTickets[ticketStatus] || []).concat(currentTickets),
-        };
-      }, {});
-      setFilteredList(filteredList);
-    }
   };
 
   // Get individual filter with id;
@@ -63,8 +54,9 @@ function AdminTicketProvider({ children }) {
   // Get data on mount
   useEffect(() => {
     if (!ticketList.length) {
-      loadTickets();
+      createTicketList();
     }
+
     return () => {
       deleteTicketList();
     };
@@ -77,7 +69,7 @@ function AdminTicketProvider({ children }) {
     filteredList,
     isLoading,
     getIndividualTicket,
-    loadTickets,
+    createTicketList,
   };
 
   return <AdminTicketContext.Provider value={value}>{children}</AdminTicketContext.Provider>;
