@@ -13,7 +13,7 @@ export default function Admin() {
   return isAdmin ? (
     <Redirect to={ADMIN_TICKET_LIST} />
   ) : (
-    <section className="admin-page">
+    <section data-testid="test-admin-page" className="admin-page">
       <TitleHeading>Sisteme Giriş Yapın</TitleHeading>
       <LoginForm />
     </section>
