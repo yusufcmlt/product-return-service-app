@@ -9,14 +9,7 @@ const database = firebase.firestore();
 const ticketsRef = database.collection('tickets');
 const usersRef = database.collection('users');
 
-const addNewTicket = async (ticketData, successCall, errorCall) => {
-  try {
-    const docRef = await ticketsRef.add(ticketData);
-    successCall(docRef.id);
-  } catch (error) {
-    errorCall(error);
-  }
-};
+const addNewTicket = (ticketData) => ticketsRef.add(ticketData).then((docRef) => docRef.id);
 
 // Get ticket data with given id.
 const getTicket = (ticketId) =>
