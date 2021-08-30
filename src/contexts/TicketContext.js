@@ -25,8 +25,8 @@ function TicketProvider({ children }) {
 
   const createTicketData = (data) => {
     // I am using modifyTicketDataForDetail for array of tickets
-    // In order to use it with one data i am sending one ticket data inside of an array
-    // Then getting mapped data's first element =>>> modified ticket
+    // In order to use it with, i am passing as one ticket data inside of an array
+    // Then i'm getting mapped data's first element =>>> modified ticket
     const modifiedTicketData = modifyTicketDataForDetail([data]);
     setTicketData(modifiedTicketData[0]);
     dataLoaded();
@@ -36,7 +36,6 @@ function TicketProvider({ children }) {
     // Get data from database if there is an id present and ticket is not
     if (id && !checkTicketExistInContext(id)) {
       getTicket(id).then((ticket) => {
-        console.log(ticket);
         if (Object.keys(ticket).length) {
           createTicketData(ticket);
         } else {
