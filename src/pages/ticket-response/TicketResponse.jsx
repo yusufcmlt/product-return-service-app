@@ -27,9 +27,7 @@ export default function TicketResponse() {
 
   // Checking on mount only
   useEffect(() => {
-    console.log(id);
     getTicketData(id);
-    console.log(ticketData);
   }, []);
 
   return (

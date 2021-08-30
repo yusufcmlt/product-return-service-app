@@ -7,7 +7,7 @@ import { useTicketContext } from 'contexts/TicketContext';
 import useYupValidationResolver from 'hooks/useYupValidationResolver';
 
 import ticketSchema from 'utils/form-utils/schemas/ticketSchema';
-import modifyReturnFormData from 'utils/form-utils/formHelpers';
+import { getFileLengthOnly } from 'utils/form-utils/formHelpers';
 import newTicketFormDefaults from 'utils/form-utils/defaults/newReturnTicketDefaults';
 import { TICKET_SUCCESS } from 'routes/RouteContstants';
 
@@ -16,9 +16,12 @@ import Button from 'components/button/Button';
 import FormPersonalInfo from './FormPersonalInfo';
 import FormItemInfo from './FormItemInfo';
 
+// Navigation after delay
+const navigateDelay = 2000;
+
 export default function NewReturnForm() {
   const history = useHistory();
-  const { createTicket } = useTicketContext();
+  const { getTicketData } = useTicketContext();
 
   // react-hook-form and validations
   const resolver = useYupValidationResolver(ticketSchema);
@@ -35,26 +38,27 @@ export default function NewReturnForm() {
     // Disable button on submit.
     setButtonDisabled(true);
 
-    // Modify data: add dates, change FileList then send
-    const modifiedData = modifyReturnFormData(data);
+    // Just get the file list's length
+    let { ticketFile } = data;
+    ticketFile = getFileLengthOnly(ticketFile);
+    const modifiedData = { ...data, ticketFile };
 
-    const onSuccess = (ticketDatabaseId) => {
-      // Set form status message
-      setFormStatus({ message: 'Talebiniz alındı. Yönlendiriliyorsunuz', status: 'success' });
-
-      // Add ticket data into context
-      createTicket({ ...modifiedData, ticketDatabaseId });
-      // Navigate to success page after 3s
-      setTimeout(() => {
-        history.replace(TICKET_SUCCESS);
-      }, 3000);
-    };
-    const onError = (error) => {
-      console.error(error);
-      setFormStatus({ message: 'İşleminiz gerçekleştirilemedi.', status: 'fail' });
-    };
-
-    addNewTicket(modifiedData, onSuccess, onError);
+    // Add files to firestore
+    addNewTicket(modifiedData)
+      .then((ticketId) => {
+        // Get data on firestore and add into context
+        getTicketData(ticketId);
+        setFormStatus({ message: 'Talebiniz alındı. Yönlendiriliyorsunuz', status: 'success' });
+        // Navigate to success page after 2s
+        setTimeout(() => {
+          history.replace(TICKET_SUCCESS);
+        }, navigateDelay);
+      })
+      .catch((error) => {
+        console.error(error);
+        setFormStatus({ message: 'İşleminiz gerçekleştirilemedi. Tekrar deneyin', status: 'fail' });
+        setButtonDisabled(false);
+      });
   };
 
   return (

@@ -1,19 +1,38 @@
-import InfoText from 'components/info-text/InfoText';
 import React from 'react';
-import { ticketDetailTitles } from 'utils/form-utils/formConstants';
+
+import TicketDetailColumn from './TicketDetailColumn';
+
+import './TicketDetailsCard.style.scss';
+
+// Manuel sorting the info blocks
+const firstInfoBlock = [
+  'ticketLink',
+  'ticketFirstName',
+  'ticketLastName',
+  'ticketAge',
+  'ticketIdNumber',
+  'ticketAddress',
+  'ticketTelNumber',
+];
+const secondInfoBlock = [
+  'id',
+  'ticketItemCode',
+  'ticketReason',
+  'ticketReasonDetail',
+  'ticketStatus',
+  'ticketResponseMessage',
+  'ticketFile',
+];
+const thirdInfoBlock = ['ticketCreatedAt', 'ticketModifiedAt'];
 
 export default function TicketDetailsCard({ ticketData }) {
   console.log(ticketData);
-  const dataArray = Object.keys(ticketData).sort();
-
+  console.log('render');
   return (
     <div className="ticket-detail-card">
-      {dataArray.map((ticketInfo) => {
-        const title = ticketDetailTitles[ticketInfo];
-        const detail = ticketData[ticketInfo];
-
-        return <InfoText title={title} detail={detail} />;
-      })}
+      <TicketDetailColumn infoArray={firstInfoBlock} ticketData={ticketData} />
+      <TicketDetailColumn infoArray={secondInfoBlock} ticketData={ticketData} />
+      <TicketDetailColumn infoArray={thirdInfoBlock} ticketData={ticketData} />
     </div>
   );
 }

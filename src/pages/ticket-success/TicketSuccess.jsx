@@ -1,36 +1,22 @@
 import React from 'react';
-import QRCode from 'react-qr-code';
+
 import { useTicketContext } from 'contexts/TicketContext';
 import { Redirect } from 'react-router-dom';
 
 import { HOMEPAGE } from 'routes/RouteContstants';
 
-import { TitleHeading, SubHeading } from 'components/headings/Headings';
-import ProcessDetail from './components/ProcessDetail';
-
-import './TicketSuccess.style.scss';
-
-const qrDesktopSize = 160;
+import ConditionWrapper from 'components/condition-wrapper/ConditionWrapper';
+import SuccessContent from './components/SuccessContent';
 
 export default function TicketSuccess() {
   const { ticketData } = useTicketContext();
-  const returnedItemLink = `${window.location.origin}/basvuru/${ticketData?.ticketDatabaseId}`;
+  const ticketExists = !!Object.keys(ticketData).length;
 
   return (
-    <>
-      {ticketData ? (
-        <section className="ticket-success-page">
-          <TitleHeading>İade süreciniz başlatıldı</TitleHeading>
-          <SubHeading>İade süreciniz hakkındaki bilgiler:</SubHeading>
-          <QRCode value={returnedItemLink || 'nope'} size={qrDesktopSize} />
-          <ProcessDetail data={ticketData} itemLink={returnedItemLink} />
-          <p className="ticket-success-page__link-text">
-            İade durumunuz hakkındaki bilgilere link veya qr kod ile ulaşabilirsiniz.
-          </p>
-        </section>
-      ) : (
-        <Redirect to={HOMEPAGE} />
-      )}
-    </>
+    <ConditionWrapper
+      condition={ticketExists}
+      componentTrue={<SuccessContent data={ticketData} />}
+      componentFalse={<Redirect to={HOMEPAGE} />}
+    />
   );
 }
