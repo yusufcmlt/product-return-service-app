@@ -18,19 +18,20 @@ const addNewTicket = async (ticketData, successCall, errorCall) => {
   }
 };
 
-const checkTicketNumber = async (ticketId, foundCall, notFoundCall = () => {}) => {
-  try {
-    const ticketData = await ticketsRef.doc(ticketId).get();
-    if (ticketData.exists) {
-      foundCall(ticketData.data());
-    } else {
-      notFoundCall();
-    }
-  } catch (error) {
-    notFoundCall(error);
-  }
-};
+// Get ticket data with given id.
+const getTicket = (ticketId) =>
+  ticketsRef
+    .doc(ticketId)
+    .get()
+    .then((ticketDoc) => {
+      if (ticketDoc.exists) {
+        return { id: ticketDoc.id, ...ticketDoc.data() };
+      }
+      return {};
+    })
+    .catch((error) => console.error(error));
 
+// Check given login credentials for admin page
 const adminLogin = async (adminCredentials, successCall, errorCall) => {
   // Get form user data
   const { adminUserName, adminPassword } = adminCredentials;
@@ -57,18 +58,18 @@ const adminLogin = async (adminCredentials, successCall, errorCall) => {
   }
 };
 
-const getAdminTickets = (successCall) => {
-  // Get admin tickets and send to context using successCall
-  const adminTickets = [];
+const getTicketsList = () => {
+  const ticketsList = [];
 
-  // Admin tickets and id values
-  ticketsRef
+  // Get Tickets and order by modified date
+  return ticketsRef
+    .orderBy('ticketModifiedAt')
     .get()
     .then((ticketSnapshot) => {
       ticketSnapshot.forEach((ticketDoc) => {
-        adminTickets.push({ id: ticketDoc.id, ...ticketDoc.data() });
+        ticketsList.push({ id: ticketDoc.id, ...ticketDoc.data() });
       });
-      successCall(adminTickets);
+      return ticketsList;
     })
     .catch((error) => {
       console.error(error);
@@ -84,12 +85,12 @@ const updateTicketInfo = (ticketId, ticketData, successCall) => {
     .update({
       ticketStatus,
       ticketResponseMessage,
-      modifiedAt: new Date(),
+      ticketModifiedAt: new Date(),
     })
     .then(() => {
       successCall();
     });
 };
 
-export { addNewTicket, checkTicketNumber, adminLogin, getAdminTickets, updateTicketInfo, database };
+export { addNewTicket, getTicket, adminLogin, getTicketsList, updateTicketInfo, database };
 export default firebase;

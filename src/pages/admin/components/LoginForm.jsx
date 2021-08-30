@@ -4,8 +4,8 @@ import useYupValidationResolver from 'hooks/useYupValidationResolver';
 import { useAuthContext } from 'contexts/AuthContext';
 
 import { adminLogin } from 'services/firebase/firebaseUtils';
-import { adminFormDefaults } from 'utils/form-utils/formConstants';
 import loginSchema from 'utils/form-utils/schemas/loginSchema';
+import adminFormDefaults from 'utils/form-utils/defaults/adminFormDefaults';
 
 import Form from 'components/form/Form';
 import Button from 'components/button/Button';
@@ -42,11 +42,20 @@ export default function LoginForm() {
   return (
     <FormProvider {...methods}>
       <Form onSubmit={handleSubmit(formLogin)}>
-        <Form.StatusText isTextShown={isErrorShown} statusText="Giriş yapılamadı" />
-        <Form.Row labelForId="adminUserName" labelText="Kullanıcı adınız">
+        <Form.Row
+          labelForId="adminUserName"
+          labelText="Kullanıcı adınız"
+          isTextShown={isErrorShown}
+          statusText="Giriş yapılamadı"
+        >
           <Form.TextInput id="adminUserName" />
         </Form.Row>
-        <Form.Row labelForId="adminPassword" labelText="Şifreniz">
+        <Form.Row
+          labelForId="adminPassword"
+          labelText="Şifreniz"
+          isTextShown={isErrorShown}
+          statusText=" "
+        >
           <Form.TextInput id="adminPassword" type="password" />
         </Form.Row>
         <Form.Row>

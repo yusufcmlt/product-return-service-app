@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import useYupValidationResolver from 'hooks/useYupValidationResolver';
+import { useHistory } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useTicketContext } from 'contexts/TicketContext';
+import useYupValidationResolver from 'hooks/useYupValidationResolver';
 
-import { searchFormDefaults } from 'utils/form-utils/formConstants';
+import { getTicket } from 'services/firebase/firebaseUtils';
 import ticketSearchSchema from 'utils/form-utils/schemas/searchTicketSchema';
+import searchFormDefaults from 'utils/form-utils/defaults/searchFormDefaults';
+import { PUBLIC_TICKET_ITEM } from 'routes/RouteContstants';
 
 import Form from 'components/form/Form';
 import Button from 'components/button/Button';
-import { checkTicketNumber } from 'services/firebase/firebaseUtils';
-import { useHistory } from 'react-router-dom';
-import { PUBLIC_TICKET_ITEM } from 'routes/RouteContstants';
-import { useTicketContext } from 'contexts/TicketContext';
 
 const SearchForm = () => {
   const history = useHistory();
-  const { createTicket } = useTicketContext();
+  const { createTicketData } = useTicketContext();
 
   // react-hook-form and validations
   const resolver = useYupValidationResolver(ticketSearchSchema);
@@ -24,22 +24,28 @@ const SearchForm = () => {
     defaultValues: { searchFormDefaults },
   });
 
-  // Error state
+  // Error and button states
   const [isErrorShown, setErrorShown] = useState(false);
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
 
+  /*
+   * Search for ticket data in firestore database.
+   *  Add ticket data to ticket context state
+   *  Redirect user if successful
+   *  Show error message if not
+   */
   const searchTicket = (data) => {
     const { ticketSearch } = data;
-    // Add found ticket data to ticket context
-    const onFound = (returnedTicketData) => {
-      createTicket(returnedTicketData);
-      history.replace(`${PUBLIC_TICKET_ITEM}/${ticketSearch}`);
-    };
-    const onNotFound = (error = '') => {
-      console.error(error);
-      setErrorShown(true);
-    };
-
-    checkTicketNumber(ticketSearch, onFound, onNotFound);
+    setButtonDisabled(true);
+    getTicket(ticketSearch).then((ticket) => {
+      if (Object.keys(ticket).length) {
+        createTicketData(ticket);
+        history.push(`${PUBLIC_TICKET_ITEM}/${ticketSearch}`);
+      } else {
+        setErrorShown(true);
+        setButtonDisabled(false);
+      }
+    });
   };
 
   return (
@@ -49,7 +55,7 @@ const SearchForm = () => {
           <div className="check-ticket-page__search-box">
             <Form.TextInput id="ticketSearch" />
             <Form.StatusText isTextShown={isErrorShown} statusText="İade işlemi bulunamadı." />
-            <Button isSubmit buttonText="İade Durum Sorgula" />
+            <Button isSubmit buttonText="İade Durum Sorgula" isDisabled={isButtonDisabled} />
           </div>
         </Form>
       </FormProvider>
