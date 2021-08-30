@@ -2,10 +2,12 @@
   from {
     transform: translateY(5rem);
     opacity: 0;
+    filter: invert(1);
   }
   to {
     transform: translateY(0);
     opacity: 1;
+    filter: invert(0);
   }
 }
 
