@@ -21,6 +21,7 @@
 - react-router
 - node-sass / SASS
 - react-hook-form - yup
+- react-qr-code
 - eslint / eslint-airbnb-config
 - Firebase - Firestore database
 - React Testing Library - Jest - Enzyme (Cok basarili olamadim.)
