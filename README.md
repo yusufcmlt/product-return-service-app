@@ -7,7 +7,7 @@
 ---
 
 <h2 align="center"> 
- <a href="https://graduation-project-yusufcmlt.netlify.app" target="_blank" >>>>Demo<<<</a></h2>
+ <a href="https://graduation-project-yusufcmlt.netlify.app" target="_blank"> >>>>Demo<<<</a></h2>
  <h3 align="center"> Kullanici adi: kodluyoruz</h3>
  <h3 align="center"> Sifre: bootcamp109</h3>
 
