@@ -11,7 +11,7 @@ export default function SuccessContent({ data }) {
   const ticketLink = `${window.location.origin}/basvuru/${data?.id}`;
 
   return (
-    <section className="ticket-success-page">
+    <section className="ticket-success-page" data-testid="test-success-content">
       <TitleHeading>İade süreciniz başlatıldı</TitleHeading>
       <SubHeading>İade süreciniz hakkındaki bilgiler:</SubHeading>
       <QRCode value={ticketLink || 'nothing to see here'} size={qrDesktopSize} />
