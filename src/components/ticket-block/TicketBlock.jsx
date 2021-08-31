@@ -11,11 +11,23 @@ export default function TicketBlock({ ticketData, ...props }) {
   const statusColor = getTicketStatusColor(ticketStatus);
 
   return (
-    <div role="button" className="ticket-block" {...props}>
-      <span className="ticket-block__col">{id}</span>
-      <span className="ticket-block__col">{`${ticketFirstName} ${ticketLastName}`}</span>
-      <span className="ticket-block__col">{ticketReason}</span>
-      <span className={`ticket-block__col ticket-block__col--${statusColor}`}>{ticketStatus}</span>
+    <div data-testid="test-ticketblock-button" role="button" className="ticket-block" {...props}>
+      <span data-testid="test-ticketblock-span" className="ticket-block__col">
+        {id}
+      </span>
+      <span
+        data-testid="test-ticketblock-span"
+        className="ticket-block__col"
+      >{`${ticketFirstName} ${ticketLastName}`}</span>
+      <span data-testid="test-ticketblock-span" className="ticket-block__col">
+        {ticketReason}
+      </span>
+      <span
+        data-testid="test-ticketblock-span"
+        className={`ticket-block__col ticket-block__col--${statusColor}`}
+      >
+        {ticketStatus}
+      </span>
     </div>
   );
 }

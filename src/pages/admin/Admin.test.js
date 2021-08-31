@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom';
 
 import React from 'react';
-import { act, render, screen, fireEvent, cleanup } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { shallow } from 'enzyme';
 
 import TestWrapper from 'components/test-wrapper/TestWrapper';
 import Admin from './Admin';
@@ -18,27 +19,25 @@ describe('login page tests', () => {
   });
 
   test('if shows error on login form using wrong credentials', async () => {
-    let mockErrorShown = false;
-    const mockSubmit = () => {
-      console.log('called');
-      mockErrorShown = true;
-    };
+    const wrapper = shallow(
+      <LoginForm
+        onSubmit={() => {
+          wrapper.setProps({ isErrorShown: true });
+        }}
+        isErrorShown={false}
+      />
+    );
 
-    render(<LoginForm onSubmit={mockSubmit} isErrorShown={mockErrorShown} />);
+    const userNameField = wrapper.find('#adminUserName');
+    const passwordField = wrapper.find('#adminPassword');
+    const buttonSubmit = wrapper.find('.btn');
 
-    const userNameField = screen.getByLabelText('Kullanıcı adınız');
-    const passwordField = screen.getByLabelText('Şifreniz');
-    const button = screen.getByRole('button');
+    userNameField.simulate('change', { target: { value: 'arandomuser' } });
+    passwordField.simulate('change', { target: { value: 'arandomPassword' } });
 
-    await act(async () => {
-      fireEvent.change(userNameField, { target: { value: 'aRandomUser' } });
-      fireEvent.change(passwordField, { target: { value: 'aRandomPassword' } });
-    });
-    fireEvent.click(button);
-    cleanup();
-    console.log(mockErrorShown);
-    render(<LoginForm onSubmit={mockSubmit} isErrorShown={mockErrorShown} />);
+    buttonSubmit.simulate('click');
 
-    expect(screen.getByTestId('test-stattext-adminUserName')).toHaveStyle('visibility:visible');
+    const statusText = wrapper.find({ 'data-testid': 'test-stattext-adminUserName' });
+    expect(statusText).toHaveStyle('visibility:visible');
   });
 });

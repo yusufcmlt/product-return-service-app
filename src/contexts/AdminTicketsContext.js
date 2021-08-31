@@ -75,4 +75,4 @@ function AdminTicketProvider({ children }) {
   return <AdminTicketContext.Provider value={value}>{children}</AdminTicketContext.Provider>;
 }
 
-export { useAdminTicketContext, AdminTicketProvider };
+export { useAdminTicketContext, AdminTicketProvider, AdminTicketContext };
