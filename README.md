@@ -11,7 +11,7 @@
  <h3 align="center"> Kullanici adi: kodluyoruz</h3>
  <h3 align="center"> Sifre: bootcamp109</h3>
 
-<video src=" https://user-images.githubusercontent.com/58252790/131495574-d18c8897-09cf-4255-885e-a0ddab83c8d6.mp4" width="1280" height="720" controls preload autoplay></video>
+ <video src="https://user-images.githubusercontent.com/58252790/131495574-d18c8897-09cf-4255-885e-a0ddab83c8d6.mp4" width="1280" height="720" controls preload autoplay></video>
 
 ---
 
@@ -38,6 +38,8 @@
 
 - Testler konusunda zorlandim. Test kismi biraz karisik olabilir. Belki nasil test yazilmaz diye ornek bile gosterilebilirim 😃
 
+ ---
+ 
 #### Genel Açıklama
 
 Uygulamamız herkese açık bir başvuru formunun son kullanıcı tarafından doldurulması ile başlıyor.
