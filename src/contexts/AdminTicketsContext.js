@@ -4,6 +4,7 @@ import { getTicketsList } from 'services/firebase/firebaseUtils';
 
 import {
   groupTicketsByKey,
+  modifyGroupedTicketsForDetail,
   modifyTicketDataForDetail,
 } from 'utils/ticket-data-utils/ticketDataUtils';
 
@@ -26,9 +27,9 @@ function AdminTicketProvider({ children }) {
   // Get ticket data from database
   const createTicketList = () => {
     getTicketsList().then((ticketData) => {
-      const groupedData = groupTicketsByKey(ticketData, 'ticketStatus');
+      let groupedData = groupTicketsByKey(ticketData, 'ticketStatus');
       const detailData = modifyTicketDataForDetail(ticketData);
-
+      groupedData = modifyGroupedTicketsForDetail(groupedData);
       setTicketList(detailData);
       setFilteredList(groupedData);
       setLoading(false);

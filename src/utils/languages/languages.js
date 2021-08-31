@@ -1,3 +1,6 @@
+// BURAYI KULLANMIYORUM
+// SONRADAN DEGISTIRDIM
+
 const languagesGlobal = {
   tr: {},
   en: {},

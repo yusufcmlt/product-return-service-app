@@ -50,6 +50,13 @@ const modifyTicketDataForDetail = (ticketData) => {
 
   return ticketNewData;
 };
+const modifyGroupedTicketsForDetail = (filteredTicketData) => {
+  const filteredNewData = { ...filteredTicketData };
+  Object.keys(filteredNewData).forEach((ticketGroup) => {
+    filteredNewData[ticketGroup] = modifyTicketDataForDetail(filteredNewData[ticketGroup]);
+  });
+  return filteredNewData;
+};
 
 const getTicketStatusColor = (statusKey) => {
   const colorClass = Object.keys(ticketStatusMessage).find(
@@ -58,4 +65,10 @@ const getTicketStatusColor = (statusKey) => {
   return colorClass;
 };
 
-export { groupTicketsByKey, modifyTicketDates, modifyTicketDataForDetail, getTicketStatusColor };
+export {
+  groupTicketsByKey,
+  modifyTicketDates,
+  modifyTicketDataForDetail,
+  getTicketStatusColor,
+  modifyGroupedTicketsForDetail,
+};
