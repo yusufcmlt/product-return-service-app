@@ -9,9 +9,15 @@ export default function TicketResponseContent({ data }) {
   const statusColor = getTicketStatusColor(ticketStatus);
 
   return (
-    <section className="ticket-response-page">
+    <section className="ticket-response-page" data-testid="test-ticket-response-content">
       <TitleHeading>
-        İade durumunuz:<span className={`ticket-status--${statusColor}`}>{ticketStatus}</span>
+        İade durumunuz:
+        <span
+          data-testid="test-ticket-response-heading"
+          className={`ticket-status--${statusColor}`}
+        >
+          {ticketStatus}
+        </span>
       </TitleHeading>
       <TicketDetailsCard ticketData={data} />
     </section>

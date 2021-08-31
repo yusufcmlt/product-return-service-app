@@ -27,7 +27,7 @@ const thirdInfoBlock = ['ticketCreatedAt', 'ticketModifiedAt'];
 
 export default function TicketDetailsCard({ ticketData }) {
   return (
-    <div className="ticket-detail-card">
+    <div className="ticket-detail-card" data-testid="test-ticket-detail-card">
       <TicketDetailColumn infoArray={firstInfoBlock} ticketData={ticketData} />
       <TicketDetailColumn infoArray={secondInfoBlock} ticketData={ticketData} />
       <TicketDetailColumn infoArray={thirdInfoBlock} ticketData={ticketData} />
