@@ -1,0 +1,10 @@
+@import '/src/styles/animations';
+@import '/src/styles/variables';
+.page {
+  grid-row: content-start/content-end;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+
+  opacity: 0;
+}

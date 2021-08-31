@@ -1,0 +1,57 @@
+@import '/src/styles/variables';
+
+.ticket-success-page {
+  display: grid;
+  grid-template-rows: 10rem 10rem min-content 10rem;
+  width: 120rem;
+  @media only screen and (max-width: $bp-large) {
+    width: 95vw;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  svg {
+    position: absolute;
+    right: 10%;
+    top: 10%;
+    @media only screen and (max-width: $bp-medium) {
+      display: none;
+    }
+  }
+  h1 {
+    align-self: center;
+    @media only screen and (max-width: $bp-large) {
+      flex-basis: 100%;
+    }
+    @media only screen and (max-width: $bp-small) {
+      text-align: left;
+      font-size: 4rem;
+    }
+  }
+  h3 {
+    align-self: center;
+    @media only screen and (max-width: $bp-large) {
+      flex-basis: 70%;
+    }
+    @media only screen and (max-width: $bp-small) {
+      margin: 2rem 0;
+      flex-basis: 100%;
+    }
+  }
+
+  &__link-text {
+    align-self: center;
+    justify-self: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-style: italic;
+    color: $color-gray-dark;
+    @media only screen and (max-width: $bp-large) {
+      flex-basis: 100%;
+    }
+    @media only screen and (max-width: $bp-small) {
+      margin: 2rem 0;
+    }
+  }
+}

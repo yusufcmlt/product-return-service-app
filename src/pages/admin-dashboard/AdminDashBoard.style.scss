@@ -1,0 +1,83 @@
+@import '/src/styles/variables';
+.admin-dashboard-page {
+  .dashboard__tickets {
+    display: grid;
+    row-gap: 5rem;
+    padding: 5rem 0;
+
+    .stats-container {
+      width: 100rem;
+      display: grid;
+      grid-template-columns: repeat(4, min-content);
+
+      justify-content: space-between;
+
+      @media only screen and (max-width: $bp-large) {
+        grid-template-columns: repeat(2, min-content);
+        justify-content: center;
+        row-gap: 2rem;
+        column-gap: 2rem;
+      }
+      @media only screen and (max-width: $bp-medium) {
+        grid-template-columns: min-content;
+        width: 95vw;
+      }
+    }
+
+    .tickets {
+      &__container {
+        display: grid;
+        grid-template-rows: 5rem min-content;
+        row-gap: 2rem;
+      }
+      &__header {
+        align-self: center;
+        display: flex;
+        justify-content: space-around;
+
+        font-size: 1.5rem;
+        font-weight: 700;
+        border-bottom: 1px solid $color-gray-dark;
+      }
+      &__list {
+        display: grid;
+        grid-template-rows: auto;
+        row-gap: 1rem;
+      }
+    }
+  }
+  .dashboard__ticket-update {
+    display: grid;
+    grid-template-rows: 10rem 1fr;
+
+    row-gap: 5rem;
+
+    align-items: center;
+
+    h1 {
+      grid-column: 1/3;
+    }
+    @media only screen and (max-width: $bp-large) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      h1 {
+        flex-basis: 95%;
+      }
+      .ticket-detail-card {
+        flex-basis: 95%;
+      }
+    }
+  }
+  .dashboard__edit-ticket {
+    grid-column: 1/3;
+    button {
+      align-self: center;
+      justify-self: center;
+    }
+    @media only screen and (max-width: $bp-large) {
+      flex-basis: 95%;
+    }
+  }
+}

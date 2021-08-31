@@ -1,0 +1,52 @@
+@import './styles/typography';
+@import './styles/variables';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  /* Layout */
+  background: linear-gradient(238.98deg, $color-red-1 -2.39%, $color-red-2 110.15%);
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: [full-start] 1fr [content-start] 160rem [content-end] 1fr [full-end];
+}
+#root {
+  grid-column: content-start/content-end;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@media only screen and (max-width: 1600px) {
+  body {
+    grid-template-columns: [content-start] 1fr [content-end];
+  }
+}
+@media only screen and (max-width: 1400px) {
+  html {
+    font-size: 58%;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  html {
+    font-size: 55%;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  html {
+    font-size: 50%;
+  }
+}

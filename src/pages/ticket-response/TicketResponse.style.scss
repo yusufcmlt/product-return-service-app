@@ -1,0 +1,24 @@
+@import '/src/styles/variables';
+
+.ticket-status {
+  &--pending {
+    color: $color-blue;
+  }
+  &--rejected {
+    color: $color-red-1;
+  }
+  &--accepted {
+    color: $color-green;
+  }
+}
+.ticket-response-page {
+  display: grid;
+  grid-template-rows: 10rem 1fr;
+  row-gap: 5rem;
+  width: 120rem;
+  @media only screen and (max-width: $bp-large) {
+    width: 95vw;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

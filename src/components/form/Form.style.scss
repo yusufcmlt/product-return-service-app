@@ -1,0 +1,143 @@
+@import '../../styles/variables';
+
+.form {
+  &__title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $color-gray-dark;
+  }
+  &__subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $color-gray-lighter;
+  }
+  &__label {
+    font-size: 1.4rem;
+    color: $color-gray-lighter;
+    font-weight: 600;
+  }
+
+  select {
+    height: 4rem;
+    background-color: $color-white;
+    border: none;
+    border-radius: 0.5rem;
+    border: 0.2rem solid $color-gray-input;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1.4rem;
+
+    option {
+      background-color: $color-white;
+    }
+  }
+
+  input {
+    height: 4rem;
+    padding: 0.5rem 1rem;
+
+    border: 0.2rem solid $color-gray-input;
+    border-radius: 0.5rem;
+
+    font-family: inherit;
+    font-size: 1.4rem;
+  }
+  .input {
+    &--invalid {
+      border: 0.1rem solid $color-red-1;
+    }
+    &--valid {
+      border: 0.1rem solid $color-green-light;
+    }
+  }
+
+  textarea {
+    min-height: 10rem;
+    resize: none;
+    padding: 1rem;
+    border: 0.2rem solid $color-gray-input;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 1.4rem;
+  }
+  &__row {
+    display: grid;
+    grid-template-rows: repeat(3, min-content);
+    row-gap: 0.5rem;
+    margin: 1rem 0;
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &--box-error {
+      input,
+      textarea {
+        border: 0.2rem solid $color-red-1;
+        &:focus {
+          outline: 0.1rem solid $color-red-1;
+        }
+      }
+      .form__label {
+        color: $color-red-1;
+      }
+    }
+    &--box-valid {
+      input,
+      textarea {
+        border: 0.2rem solid $color-green-light;
+        &:focus {
+          outline: 0.1rem solid $color-green-light;
+        }
+      }
+      .form__label {
+        color: $color-green-light;
+      }
+    }
+  }
+  &__file-input {
+    height: 5.5rem;
+    width: 100%;
+    padding: 0 5rem;
+    border-radius: 0.5rem;
+    background-color: $color-blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+
+    color: $color-white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    box-shadow: $box-shadow-2;
+
+    justify-self: center;
+    margin: 2rem 0;
+
+    &:active {
+      transform: translateY(2px);
+    }
+    &:hover {
+      color: $color-blue;
+      background-color: $color-white;
+      border: 0.1rem solid $color-blue;
+    }
+
+    input {
+      width: 0 !important;
+      display: none;
+    }
+  }
+  &__status-text {
+    min-height: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    &--error {
+      color: $color-red-2;
+    }
+    &--valid {
+      color: $color-green-light;
+    }
+  }
+}

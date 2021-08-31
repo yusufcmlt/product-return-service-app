@@ -1,0 +1,54 @@
+@import '../../styles/variables';
+
+.btn {
+  min-width: 20rem;
+  height: 5.5rem;
+  max-width: 30rem;
+
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+
+  box-shadow: $box-shadow-1;
+
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-family: $font-content;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  &:active {
+    transform: translateY(0.2rem);
+  }
+
+  &--black {
+    background-color: $color-black;
+    color: $color-white;
+    &:hover {
+      background-color: $color-white;
+      color: $color-black;
+      border: 1px solid $color-black;
+    }
+  }
+  &--green {
+    background-color: $color-green;
+    color: $color-white;
+    &:hover {
+      background-color: $color-white;
+      color: $color-green;
+      border: 1px solid $color-green;
+    }
+  }
+  &:disabled {
+    background-color: $color-gray-dark;
+    color: $color-white;
+    &:hover {
+      border: none;
+    }
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}

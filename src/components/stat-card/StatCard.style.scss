@@ -1,0 +1,54 @@
+@import '/src/styles/variables';
+
+.stat-card {
+  width: 20rem;
+  height: 15rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: grid;
+  align-content: space-between;
+  font-weight: 600;
+
+  border: none;
+  font-family: inherit;
+
+  box-shadow: $box-shadow-2;
+  color: $color-white;
+
+  cursor: pointer;
+  transition: 0.3s;
+  @media only screen and (max-width: $bp-medium) {
+    width: 60vw;
+  }
+  @media only screen and (max-width: $bp-small) {
+    width: 95vw;
+  }
+  &:hover {
+    transform: scale(1.01);
+  }
+  &:active {
+    transform: translateY(2px);
+  }
+  &__title {
+    font-size: 1.9rem;
+    text-align: left;
+  }
+  &__detail {
+    font-size: 4rem;
+    justify-self: end;
+  }
+
+  &--gray {
+    background-color: $color-gray;
+    color: $color-black;
+  }
+  &--green {
+    background-color: $color-green;
+  }
+  &--blue {
+    background-color: $color-blue;
+  }
+  &--red {
+    background-color: $color-red-2;
+  }
+}

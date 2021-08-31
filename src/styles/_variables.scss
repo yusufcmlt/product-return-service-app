@@ -1,0 +1,33 @@
+//FONTS
+$font-header: 'Nunito', sans-serif;
+$font-content: 'Raleway', sans-serif;
+
+//COLORS
+
+$color-red-1: #ff605f;
+$color-red-2: #b94545;
+$color-black: #000;
+$color-white: #fff;
+$color-white-gray: #eceaea;
+
+$color-gray: #d7dddb;
+$color-gray-lighter: #7c7c7c;
+$color-gray-dark: #484848;
+$color-gray-input: #a19f9f;
+
+$color-blue: #4a7bf3;
+
+$color-green: #338f6c;
+$color-green-light: #3fac82;
+
+//SHADOWS
+
+$box-shadow-1: rgba(100, 100, 111, 0.2) 0px 0.7rem 3rem 0px;
+$box-shadow-2: rgba(0, 0, 0, 0.24) 0px 0.3rem 0.8rem;
+$box-shadow-3: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 81.25em; // 1300px
+$bp-large: 62.5em; // 1000px
+$bp-medium: 50em; // 800px;
+$bp-small: 37.5em; // 600px;
