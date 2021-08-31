@@ -1,6 +1,42 @@
-## Bitirme projesi
+# Bitirme projesi
 
-### Başvuru / ticket yönetim sistemi
+---
+
+### Başvuru / ticket yönetim sistemi ===> Urun iade ticket sistemi
+
+---
+
+<h2 align="center"> 
+ <a href="https://graduation-project-yusufcmlt.netlify.app" target="_blank" >>>>Demo<<<</a></h2>
+ <h3 align="center"> Kullanici adi: kodluyoruz</h3>
+ <h3 align="center"> Sifre: bootcamp109</h3>
+
+<video src=" https://user-images.githubusercontent.com/58252790/131495574-d18c8897-09cf-4255-885e-a0ddab83c8d6.mp4" width="1280" height="720" controls preload autoplay></video>
+
+---
+
+#### Kullanilan araclar/kutuphaneler
+
+- React - Context API - Hooks
+- react-router
+- node-sass / SASS
+- react-hook-form - yup
+- eslint / eslint-airbnb-config
+- Firebase - Firestore database
+- React Testing Library - Jest - Enzyme (Cok basarili olamadim.)
+- Figma - [Tasarim Linkine Ulasabilirsiniz](https://www.figma.com/file/dKSRwEgMKDe1pWKkOoSALX/innovance-graduation-project?node-id=0%3A1)
+
+---
+
+#### Notlar:
+
+- Default olarak `/basvuru-olustur` yerine bir site anasayfasi varmis gibi ilerledim. Anasayfadaki button ile istenen sayfaya gecilebilir durumda.
+
+- `/admin/basvuru/{basvuruNo}` yerine de `/admin/basvuru-listesi/{basvuruNo}` seklinde kullandim. Adres yine basvuru no olmadan da kullanilabilir durumda.
+
+- Eslint ile airbnb config kullanarak gelistirme yapmaya calistim. no-console ve bazi erisilebilirlik kurallarini disable ettim.
+
+- Testler konusunda zorlandim. Test kismi biraz karisik olabilir. Belki nasil test yazilmaz diye ornek bile gosterilebilirim 😃
 
 #### Genel Açıklama
 
